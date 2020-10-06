@@ -21,7 +21,9 @@ function _scuba_sub_install -a name
 
     set -U _scuba_"$nameEscaped"_files (string replace $location '' $location/{completions,conf.d,functions}/**)
 
-    set -Ua _scuba_plugins $name
+    if not contains $name $_scuba_plugins
+        set -Ua _scuba_plugins $name
+    end
 
     source $location/install.fish 2>/dev/null # Don't error if install.fish doesn't exist
 
