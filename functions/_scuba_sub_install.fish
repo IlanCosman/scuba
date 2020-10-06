@@ -13,7 +13,7 @@ function _scuba_sub_install -a name
         git clone --quiet --depth=1 https://github.com/$name $location
     end
 
-    if string match --quiet --regex "\.fish\$" $location # If there are any top level fish files
+    if string match --quiet --regex "\.fish\$" $location/* # If there are any top level fish files
         cp $location/*.fish $location/functions # copy them into location's function directory
     end
     cp -r $location/{completions,conf.d,functions} $__fish_config_dir 2>/dev/null # Don't error if any of the directories don't exist
