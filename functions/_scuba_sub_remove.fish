@@ -14,6 +14,7 @@ function _scuba_sub_remove -a name
     rm -r $__fish_config_dir/$$fileVarName 2>/dev/null
 
     set -e $fileVarName
+    set -e _scuba_plugins[(contains --index $name $_scuba_plugins)]
 
     set_color --bold blue
     printf '%s\n' "$name removed!"
