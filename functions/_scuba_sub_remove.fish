@@ -8,13 +8,14 @@ function _scuba_sub_remove
         end
 
         set -l argEscaped (string escape --style=var $arg)
-        set -l fileVararg _scuba_"$argEscaped"_files
+        set -l fileVarName _scuba_"$argEscaped"_files
+        set -a uninstalledFiles $$fileVarName
 
         # Use -r to remove any custom directories
         # Ignore errors, as some files may be contained within directories
-        rm -r $__fish_config_dir/$$fileVararg 2>/dev/null
+        rm -r $__fish_config_dir/$$fileVarName 2>/dev/null
 
-        set -e $fileVararg
+        set -e _scuba_"$argEscaped"_files
         set -e _scuba_plugins[(contains --index $arg $_scuba_plugins)]
 
         set_color --bold blue
@@ -22,5 +23,5 @@ function _scuba_sub_remove
         set_color normal
     end
 
-    exec fish --init-command="set -g fish_greeting"
+    _scuba_shell_restart "for file in $uninstalledFiles; emit (basename -s .fish \$file)_uninstall; end"
 end

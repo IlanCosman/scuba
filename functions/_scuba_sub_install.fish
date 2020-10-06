@@ -17,6 +17,10 @@ function _scuba_sub_install
             continue
         end
 
+        if not contains $arg $_scuba_plugins
+            set -Ua _scuba_plugins $arg
+        end
+
         if string match --quiet --regex "\.fish\$" $location/* # If there are any top level fish files
             mkdir -p $location/functions
             cp $location/*.fish $location/functions # copy them into location's function directory
@@ -24,17 +28,13 @@ function _scuba_sub_install
         cp -r $location/{completions,conf.d,functions} $__fish_config_dir 2>/dev/null # Don't error if any directory doesn't exist
 
         set -U _scuba_"$argEscaped"_files (string replace $location '' $location/{completions,conf.d,functions}/**)
-
-        if not contains $arg $_scuba_plugins
-            set -Ua _scuba_plugins $arg
-        end
-
-        source $location/install.fish 2>/dev/null # Don't error if install.fish doesn't exist
+        set -l fileVarName _scuba_"$argEscaped"_files
+        set -a installedFiles $$fileVarName
 
         set_color --bold blue
         printf '%s\n' "$arg installed!"
         set_color normal
     end
 
-    exec fish --init-command="set -g fish_greeting"
+    _scuba_shell_restart "for file in $installedFiles; emit (basename -s .fish \$file)_install; end;"
 end
