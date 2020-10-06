@@ -7,6 +7,8 @@ function _scuba_sub_remove
             continue
         end
 
+        set -e _scuba_plugins[(contains --index $arg $_scuba_plugins)]
+
         set -l argEscaped (string escape --style=var $arg)
         set -l fileVarName _scuba_"$argEscaped"_files
         set -a uninstalledFiles $$fileVarName
@@ -16,7 +18,6 @@ function _scuba_sub_remove
         rm -r $__fish_config_dir/$$fileVarName 2>/dev/null
 
         set -e _scuba_"$argEscaped"_files
-        set -e _scuba_plugins[(contains --index $arg $_scuba_plugins)]
 
         set_color --bold blue
         printf '%s\n' "$arg removed!"
