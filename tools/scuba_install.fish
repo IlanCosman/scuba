@@ -5,5 +5,5 @@ function scuba_install
     git clone --quiet --depth=1 https://github.com/IlanCosman/scuba $location
     cp -r $location/{completions,conf.d,functions} $__fish_config_dir 2>/dev/null
 
-    exec fish
+    fish --init-command="scuba install IlanCosman/scuba"
 end
