@@ -10,6 +10,7 @@ function scuba
         return 0
     else if functions --query _scuba_sub_$subcommand
         _scuba_sub_$subcommand $argv[2..-1]
+        exec fish
     else
         _scuba_help
         return 1
