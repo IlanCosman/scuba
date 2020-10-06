@@ -1,5 +1,9 @@
 function _scuba_sub_remove -a name
-    set_color normal
+    if not contains $name $_scuba_plugins
+        printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $name" \n
+        return 1
+    end
+
     printf '%s\n' "Removing $name..."
 
     set -l nameEscaped (string escape --style=var $name)
@@ -14,4 +18,6 @@ function _scuba_sub_remove -a name
     set_color --bold blue
     printf '%s\n' "$name removed!"
     set_color normal
+
+    exec fish
 end

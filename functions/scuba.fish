@@ -1,4 +1,5 @@
 function scuba
+    set_color normal
     argparse --stop-nonopt 'v/version' 'h/help' -- $argv
     set -l subcommand $argv[1]
 
@@ -10,7 +11,6 @@ function scuba
         return 0
     else if functions --query _scuba_sub_$subcommand
         _scuba_sub_$subcommand $argv[2..-1]
-        exec fish
     else
         _scuba_help
         return 1
