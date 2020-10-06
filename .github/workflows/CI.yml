@@ -1,0 +1,33 @@
+---
+name: CI
+
+on:
+  push:
+    branches-ignore:
+      - main
+    tags-ignore:
+      - v*.*.*
+  pull_request:
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actionsx/prettier@v2
+        with:
+          args: --check .
+
+  super-linter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: github/super-linter@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_MD: true
+          VALIDATE_YAML: true

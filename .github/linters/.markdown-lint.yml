@@ -1,0 +1,4 @@
+---
+MD013: false # Line-length
+MD033: false # Inline-html
+MD041: false # First line in file should be a top level heading
