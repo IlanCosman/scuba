@@ -1,5 +1,5 @@
 function _scuba_sub_install -a name
-    printf '%s\n' "Fetching $name..."
+    printf '%s\n' "Installing $name..."
 
     set -l nameEscaped (string escape --style=var $name)
     set -l location /tmp/scuba/$nameEscaped
@@ -13,8 +13,6 @@ function _scuba_sub_install -a name
         printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $name" \n
         return 1
     end
-
-    printf '%s\n' "Installing $name..."
 
     if string match --quiet --regex "\.fish\$" $location/* # If there are any top level fish files
         cp $location/*.fish $location/functions # copy them into location's function directory
