@@ -24,5 +24,5 @@ function _scuba_sub_remove
         set_color normal
     end
 
-    _scuba_shell_restart "for file in $uninstalledFiles; emit (basename -s .fish \$file)_uninstall; end"
+    exec fish --init-command="set -g fish_greeting; for file in $uninstalledFiles; emit (basename -s .fish \$file)_uninstall; end"
 end

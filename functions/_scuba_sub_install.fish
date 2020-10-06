@@ -36,5 +36,5 @@ function _scuba_sub_install
         set_color normal
     end
 
-    _scuba_shell_restart "for file in $installedFiles; emit (basename -s .fish \$file)_install; end;"
+    exec fish --init-command="set -g fish_greeting; for file in $installedFiles; emit (basename -s .fish \$file)_install; end;"
 end
