@@ -22,5 +22,5 @@ function _scuba_sub_remove
         set_color normal
     end
 
-    exec fish
+    exec fish --init-command="set -g fish_greeting"
 end
