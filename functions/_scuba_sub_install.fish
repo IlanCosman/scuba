@@ -11,7 +11,7 @@ function _scuba_sub_install
 
         if test -e $arg
             cp -r $arg $location
-        else if git clone --quiet https://github.com/$argSplit[1] $location && git -C $location checkout --quiet $argSplit[2]
+        else if git clone https://github.com/$argSplit[1] $location && git -c advice.detachedHead=false -C $location checkout $argSplit[2]
         else
             printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $arg" \n
             continue
