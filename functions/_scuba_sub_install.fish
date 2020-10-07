@@ -12,6 +12,7 @@ function _scuba_sub_install
         if test -e $arg
             cp -r $arg $location
         else if git clone https://github.com/$argSplit[1] $location && git -c advice.detachedHead=false -C $location checkout $argSplit[2]
+            set -U _scuba_"$argEscaped"_sha (git -C $location rev-parse HEAD)
         else
             printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $arg" \n
             continue
