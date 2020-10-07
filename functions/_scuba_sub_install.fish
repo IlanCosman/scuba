@@ -1,5 +1,7 @@
 function _scuba_sub_install
-    for arg in $argv
+    if set -q argv[1]
+        set -l arg $argv[1]
+
         printf '%s\n' "Installing $arg..."
 
         set -l argSplit (string split --right --max=1 '@' $arg)
@@ -9,13 +11,19 @@ function _scuba_sub_install
 
         rm -rf $location
 
-        if test -e $arg
-            cp -r $arg $location
-        else if git clone https://github.com/$argSplit[1] $location && git -c advice.detachedHead=false -C $location checkout $argSplit[2]
+        if test -e $argSplit[1]
+            cp -r $argSplit[1] $location
+        else if GIT_TERMINAL_PROMPT=0 git clone https://github.com/$argSplit[1] $location
+        else
+            printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $argSplit[1]" \n
+            exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
+        end
+
+        if git -c advice.detachedHead=false -C $location checkout $argSplit[2]
             set -U _scuba_"$argEscaped"_sha (git -C $location rev-parse HEAD)
         else
-            printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $arg" \n
-            continue
+            printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $argSplit[2]" \n
+            exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
         end
 
         if not contains $arg $_scuba_plugins
@@ -30,12 +38,15 @@ function _scuba_sub_install
 
         set -U _scuba_"$argEscaped"_files (string replace $location '' $location/{completions,conf.d,functions}/**)
         set -l fileVarName _scuba_"$argEscaped"_files
-        set -a installedFiles $$fileVarName
+
+        for file in (basename -s .fish $$fileVarName)
+            emit "$file"_install
+        end
 
         set_color --bold blue
         printf '%s\n' "$arg installed!"
         set_color normal
-    end
 
-    exec fish --init-command="set -g fish_greeting; for file in $installedFiles; emit (basename -s .fish \$file)_install; end;"
+        exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
+    end
 end
