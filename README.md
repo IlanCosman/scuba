@@ -15,7 +15,7 @@ Manage functions, completions, bindings, and snippets from the command line. Ext
 - [Git][]
 - [Fish][] ≥ 3.0
 
-#### Bootstrap scuba with scuba!
+#### Bootstrap scuba
 
 ```console
 curl -L git.io/scuba-install | source && _scuba_sub_install IlanCosman/scuba
@@ -39,7 +39,7 @@ For a specific version of a plugin add an `@` symbol after the plugin name follo
 scuba install patrickf3139/fzf.fish@v4.1
 ```
 
-You can add plugins from local directories too. Local plugins will be installed using symlinks so changes to the original files will be reflected in new shell sessions.
+You can add plugins from local directories too. Local plugins will be installed using symlinks, so changes to the original files will be reflected in new shell sessions.
 
 ```console
 scuba install ~/path/to/local/plugin
@@ -58,7 +58,11 @@ patrickf3139/fzf.fish@v4.1
 
 ### Updating plugins
 
-Update plugins using the `update` command.
+Update plugins using the `update` command, which checks if the given plugins are out of date and updates them if necessary. If given no arguments, `scuba update` updates all installed plugins, including scuba itself.
+
+```console
+scuba update rafaelrinaldi/pure
+```
 
 ### Removing plugins
 
@@ -67,6 +71,8 @@ Remove plugins using the `remove` command. If a plugin has dependencies, they to
 ```console
 scuba remove rafaelrinaldi/pure
 ```
+
+Since scuba is just a plugin, you can uninstall it using `scuba remove IlanCosman/scuba`
 
 ## Contributing
 
