@@ -10,7 +10,7 @@ Manage functions, completions, bindings, and snippets from the command line. Ext
 
 ## Installation
 
-### System Requirements
+### System requirements
 
 - [Git][]
 - [Fish][] ≥ 3.0
