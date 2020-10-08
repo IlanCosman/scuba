@@ -13,7 +13,7 @@ Manage functions, completions, bindings, and snippets from the command line. Ext
 ### System requirements
 
 - [Git][]
-- [Fish][] ≥ 3.0
+- [Fish][] ≥ 3.1
 
 #### Bootstrap scuba
 
@@ -91,7 +91,7 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 [ci_badge]: https://github.com/IlanCosman/scuba/workflows/CI/badge.svg
 [created a new plugin]: docs/creating_plugins.md
 [contributing guide]: CONTRIBUTING.md
-[fish_version_badge]: https://img.shields.io/badge/fish-3.0.0%2B-blue
+[fish_version_badge]: https://img.shields.io/badge/fish-3.1.0%2B-blue
 [fish]: https://fishshell.com/
 [fisher]: https://github.com/jorgebucaran/fisher
 [git]: https://git-scm.com/
