@@ -51,10 +51,13 @@ List all explicitly installed plugins using the `list` command.
 
 ```console
 scuba list
+IlanCosman/scuba
 rafaelrinaldi/pure
 patrickf3139/fzf.fish@v4.1
 ~/path/to/myfish/plugin
 ```
+
+> `IlanCosman/scuba` is listed because scuba is just another plugin.
 
 ### Updating plugins
 
@@ -72,7 +75,7 @@ Remove plugins using the `remove` command. If a plugin has dependencies, they to
 scuba remove rafaelrinaldi/pure
 ```
 
-Since scuba is just a plugin, you can uninstall it using `scuba remove IlanCosman/scuba`
+Since scuba is just like any other plugin, you can uninstall it using `scuba remove IlanCosman/scuba`.
 
 ## Contributing
 
@@ -86,7 +89,7 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 
 [actions]: https://github.com/IlanCosman/scuba/actions
 [ci_badge]: https://github.com/IlanCosman/scuba/workflows/CI/badge.svg
-[created a new plugin]: docs/plugin_authors.md
+[created a new plugin]: docs/creating_plugins.md
 [contributing guide]: CONTRIBUTING.md
 [fish_version_badge]: https://img.shields.io/badge/fish-3.0.0%2B-blue
 [fish]: https://fishshell.com/
