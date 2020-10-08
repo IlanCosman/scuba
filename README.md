@@ -39,7 +39,7 @@ For a specific version of a plugin add an `@` symbol after the plugin name follo
 scuba install patrickf3139/fzf.fish@v4.1
 ```
 
-You can add plugins from local directories too. Local plugins will be installed using symlinks, so changes to the original files will be reflected in new shell sessions.
+You can add plugins from local directories too.
 
 ```console
 scuba install ~/path/to/local/plugin

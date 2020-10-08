@@ -30,11 +30,13 @@ function _scuba_sub_install
             set -Ua _scuba_plugins $arg
         end
 
+        mkdir -p $location/{completions,conf.d,functions}
+
         if string match --quiet --regex "\.fish\$" $location/* # If there are any top level fish files
-            mkdir -p $location/functions
             cp $location/*.fish $location/functions # copy them into location's function directory
         end
-        cp -r $location/{completions,conf.d,functions} $__fish_config_dir 2>/dev/null # Don't error if any directory doesn't exist
+
+        cp -r $location/{completions,conf.d,functions} $__fish_config_dir
 
         set -U _scuba_"$argEscaped"_files (string replace $location '' $location/{completions,conf.d,functions}/**)
         set -l fileVarName _scuba_"$argEscaped"_files
