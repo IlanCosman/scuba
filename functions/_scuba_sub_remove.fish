@@ -1,9 +1,9 @@
 function _scuba_sub_remove
-    if not set -q argv[1]
+    if not set -q argv[1] # If argv[1] doesn't exist
         return
     end
 
-    set -l arg $argv[1]
+    set -l arg (string lower $argv[1])
 
     printf '%s\n' "Removing $arg..."
 

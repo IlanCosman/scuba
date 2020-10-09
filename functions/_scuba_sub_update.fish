@@ -3,7 +3,7 @@ function _scuba_sub_update
         set argv $_scuba_plugins
     end
 
-    for arg in $argv
+    for arg in (string lower $argv)
         printf '%s\n' "Updating $arg..."
 
         if not contains $arg $_scuba_plugins
@@ -41,7 +41,7 @@ function _scuba_sub_update
         printf '%s\n' "Plugins ($updateListCount):" $updateList
 
         if _scuba_user_confirm 0 "Proceed with update?"
-            scuba install --updating $updateList
+            _scuba_sub_install --updating $updateList
         end
     end
 end
