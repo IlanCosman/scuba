@@ -46,19 +46,3 @@ function _blah_uninstall --on-event blah_uninstall
     echo "Sorry to see you go :("
 end
 ```
-
-## Dependencies
-
-Dependencies can be managed by setting the `scuba_dependencies` variable in your install event handler. `scuba_dependencies` operates under the same rules as `scuba install`.
-
-```fish
-# File conf.d/blah.fish
-
-function _blah_install --on-event blah_install
-    set -U _blah_version 3.0.0
-    # set other universal variables...
-    set -g scuba_dependencies fishpkg/fish-git-util
-
-    echo "Thanks for installing blah!"
-end
-```

@@ -69,7 +69,7 @@ scuba update rafaelrinaldi/pure
 
 ### Removing plugins
 
-Remove plugins using the `remove` command. If a plugin has dependencies, they too will be removed unless required for another plugin.
+Remove plugins using the `remove` command.
 
 ```console
 scuba remove rafaelrinaldi/pure
