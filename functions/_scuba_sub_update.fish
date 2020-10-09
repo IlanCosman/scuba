@@ -41,7 +41,7 @@ function _scuba_sub_update
         printf '%s\n' "Plugins ($updateListCount):" $updateList
 
         if _scuba_user_confirm 0 "Proceed with update?"
-            scuba install $updateList
+            scuba install --updating $updateList
         end
     end
 end
