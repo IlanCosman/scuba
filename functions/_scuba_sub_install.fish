@@ -3,12 +3,11 @@ function _scuba_sub_install
         return
     end
 
-    set -l arg (string lower $argv[1])
+    set -l arg $argv[1]
     set -l argEscaped (string escape --style=var $arg)
     set -l location /tmp/scuba/$argEscaped
 
-    set -l argSplit (string split '@' $arg)
-    if test -z "$argSplit[2]"
+    if not set -l argSplit (string split '@' $arg)
         set argSplit[2] HEAD
     end
 

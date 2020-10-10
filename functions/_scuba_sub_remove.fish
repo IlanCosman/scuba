@@ -1,9 +1,9 @@
 function _scuba_sub_remove
-    if not set -q argv[1] # If argv[1] doesn't exist
+    if test -z "$argv"
         return
     end
 
-    set -l arg (string lower $argv[1])
+    set -l arg $argv[1]
 
     if set -e _scuba_plugins[(contains --index $arg $_scuba_plugins)]
         set -l argEscaped (string escape --style=var $arg)

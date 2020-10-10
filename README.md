@@ -12,8 +12,8 @@ Manage functions, completions, bindings, and snippets from the command line. Ext
 
 ### System requirements
 
-- [Git][]
-- [Fish][] ≥ 3.1
+- [curl][]
+- [fish][] ≥ 3.1
 
 #### Bootstrap scuba
 
@@ -61,10 +61,10 @@ patrickf3139/fzf.fish@v4.1
 
 ### Updating plugins
 
-Update plugins using the `update` command, which checks if the given plugins are out of date and updates them if necessary. If given no arguments, `scuba update` updates all installed plugins, including scuba itself.
+Update plugins using the `update` command. If given no arguments, `scuba update` will update all installed plugins, including scuba itself.
 
 ```console
-scuba update rafaelrinaldi/pure
+scuba update
 ```
 
 ### Removing plugins
@@ -89,11 +89,11 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 
 [actions]: https://github.com/IlanCosman/scuba/actions
 [ci_badge]: https://github.com/IlanCosman/scuba/workflows/CI/badge.svg
-[created a new plugin]: docs/creating_plugins.md
 [contributing guide]: CONTRIBUTING.md
+[created a new plugin]: docs/creating_plugins.md
+[curl]: https://curl.haxx.se/
 [fish_version_badge]: https://img.shields.io/badge/fish-3.1.0%2B-blue
 [fish]: https://fishshell.com/
 [fisher]: https://github.com/jorgebucaran/fisher
-[git]: https://git-scm.com/
 [license_badge]: https://img.shields.io/github/license/IlanCosman/scuba
 [license]: LICENSE.md

@@ -1,3 +1,6 @@
 function _scuba_sub_update
-    _scuba_sub_install $_scuba_plugins
+    if test -z "$argv"
+        set argv $_scuba_plugins
+    end
+    _scuba_sub_install $argv
 end
