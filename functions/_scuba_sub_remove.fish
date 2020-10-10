@@ -5,19 +5,17 @@ function _scuba_sub_remove
 
     set -l arg (string lower $argv[1])
 
-    printf '%s\n' "Removing $arg..."
-
     if set -e _scuba_plugins[(contains --index $arg $_scuba_plugins)]
         set -l argEscaped (string escape --style=var $arg)
         set -l fileVarName _scuba_"$argEscaped"_files
 
-        # Use -r to remove any custom directories
-        # Ignore errors, as some files may be contained within directories
-        rm -r $__fish_config_dir/$$fileVarName 2>/dev/null
-
         for file in (basename -s .fish $$fileVarName)
             emit "$file"_uninstall
         end
+
+        # Use -r to remove any custom directories
+        # Ignore errors, as some files may be contained within directories
+        rm -r $__fish_config_dir/$$fileVarName 2>/dev/null
 
         set -e _scuba_"$argEscaped"_files
 

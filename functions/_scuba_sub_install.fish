@@ -9,12 +9,10 @@ function _scuba_sub_install
     set -l argEscaped (string escape --style=var $arg)
     set -l location /tmp/scuba/$argEscaped
 
-    printf '%s\n' "Installing $arg..."
-
     if not set -q _flag_updating
-        set -l argSplit (string split --right --max=1 '@' $arg)
+        set -l argSplit (string split '@' $arg)
 
-        if contains $argSplit[1] $_scuba_plugins_without_version
+        if contains $argSplit[1] (string split '@' $_scuba_plugins)
             printf '%s' (set_color --bold red) "error: " (set_color normal) "another version of this plugin is already installed: $arg" \n
             exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
         end
@@ -33,8 +31,6 @@ function _scuba_sub_install
             printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $argSplit[2]" \n
             exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
         end
-
-        set -Ua _scuba_plugins_without_version $argSplit[1]
 
         if not contains $arg $_scuba_plugins
             set -Ua _scuba_plugins $arg
