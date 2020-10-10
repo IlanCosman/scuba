@@ -1,43 +1,38 @@
 function _scuba_sub_install
-    argparse --stop-nonopt 'u-updating' -- $argv
-
-    if not set -q argv[1] # If argv[1] doesn't exist
+    if test -z "$argv"
         return
     end
 
     set -l arg (string lower $argv[1])
+    set -l argSplit (string split '@' $arg)
     set -l argEscaped (string escape --style=var $arg)
     set -l location /tmp/scuba/$argEscaped
 
-    if not set -q _flag_updating
-        set -l argSplit (string split '@' $arg)
-
-        if contains $argSplit[1] (string split '@' $_scuba_plugins)
-            printf '%s' (set_color --bold red) "error: " (set_color normal) "another version of this plugin is already installed: $arg" \n
-            exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
-        end
-
-        rm -rf $location
-
-        if test -e $argSplit[1]
-            cp -r $argSplit[1] $location
-        else if GIT_TERMINAL_PROMPT=0 git clone https://github.com/$argSplit[1] $location
-        else
-            printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $argSplit[1]" \n
-            exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
-        end
-
-        if set -q argSplit[2] && not git -c advice.detachedHead=false -C $location checkout $argSplit[2]
-            printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $argSplit[2]" \n
-            exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
-        end
-
-        if not contains $arg $_scuba_plugins
-            set -Ua _scuba_plugins $arg
-        end
+    if contains $arg $_scuba_plugins
+        set updating true
+    else if contains $argSplit[1] (string split '@' $_scuba_plugins)
+        printf '%s' (set_color --bold red) "error: " (set_color normal) "another version of this plugin is already installed: $arg" \n
+        exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
     end
 
-    set -U _scuba_"$argEscaped"_sha (git -C $location rev-parse HEAD 2>/dev/null)
+    rm -rf $location
+
+    if test -e $argSplit[1]
+        cp -r $argSplit[1] $location
+    else if GIT_TERMINAL_PROMPT=0 git clone https://github.com/$argSplit[1] $location
+    else
+        printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $argSplit[1]" \n
+        exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
+    end
+
+    if set -q argSplit[2] && not git -c advice.detachedHead=false -C $location checkout $argSplit[2]
+        printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $argSplit[2]" \n
+        exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
+    end
+
+    if not contains $arg $_scuba_plugins
+        set -Ua _scuba_plugins $arg
+    end
 
     mkdir -p $location/{completions,conf.d,functions}
 
@@ -55,7 +50,7 @@ function _scuba_sub_install
     set_color normal
 
     exec fish --init-command="set -g fish_greeting
-    if test -n \"$_flag_updating\"
+    if test -n \"$updating\"
         for file in (basename -s .fish $$fileVarName)
             emit \$file'_update'
         end
