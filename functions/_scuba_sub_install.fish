@@ -4,6 +4,10 @@ function _scuba_sub_install
     end
 
     set -l arg (string lower $argv[1])
+    if test -e $arg
+        set arg (realpath $arg)
+    end
+
     set -l argEscaped (string escape --style=var $arg)
     set -l location /tmp/scuba/$argEscaped
 
