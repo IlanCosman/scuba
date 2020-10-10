@@ -4,9 +4,13 @@ function _scuba_sub_install
     end
 
     set -l arg (string lower $argv[1])
-    set -l argSplit (string split '@' $arg)
     set -l argEscaped (string escape --style=var $arg)
     set -l location /tmp/scuba/$argEscaped
+
+    set -l argSplit (string split '@' $arg)
+    if test -z "$argSplit[2]"
+        set argSplit[2] HEAD
+    end
 
     if contains $arg $_scuba_plugins
         set updating true
@@ -16,25 +20,19 @@ function _scuba_sub_install
     end
 
     rm -rf $location
+    mkdir -p $location/{completions,conf.d,functions}
 
     if test -e $argSplit[1]
         cp -r $argSplit[1] $location
-    else if GIT_TERMINAL_PROMPT=0 git clone https://github.com/$argSplit[1] $location
+    else if curl --silent https://codeload.github.com/$argSplit[1]/tar.gz/$argSplit[2] | tar --extract --gzip --strip-components 1 --directory $location 2>/dev/null
     else
-        printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $argSplit[1]" \n
-        exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
-    end
-
-    if set -q argSplit[2] && not git -c advice.detachedHead=false -C $location checkout $argSplit[2]
-        printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $argSplit[2]" \n
+        printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $arg" \n
         exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
     end
 
     if not contains $arg $_scuba_plugins
         set -Ua _scuba_plugins $arg
     end
-
-    mkdir -p $location/{completions,conf.d,functions}
 
     if string match --quiet --regex "\.fish\$" $location/* # If there are any top level fish files
         cp $location/*.fish $location/functions # copy them into location's function directory
