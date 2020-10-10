@@ -1,8 +1,6 @@
 function scuba
     set_color normal
     argparse --stop-nonopt 'v/version' 'h/help' -- $argv
-
-    set argv (string lower $argv)
     set -l subcommand $argv[1]
 
     if set -q _flag_version
@@ -20,5 +18,22 @@ function scuba
 end
 
 function _scuba_help
-    printf '%s\n' "Help message"
+    set -l cmd (set_color $fish_color_command)
+    set -l param (set_color $fish_color_param)
+    set -l b (set_color --bold)
+    set -l n (set_color normal)
+
+    printf '%s\n' \
+        "Usage:$cmd scuba$n [options]$param subcommand$n" \
+        "" \
+        "Options:" \
+        "  -v or --version  print scuba version" \
+        "  -h or --help     print this help message" \
+        "" \
+        "Subcommands:" \
+        $b"  install$n <plugins...>  install plugins" \
+        $b"  remove$n <plugins...>   remove installed plugins" \
+        $b"  update$n <plugins...>   update installed plugins" \
+        $b"  list$n                  list all installed plugins" \
+        $b"  bug-report$n            print info for use in bug reports"
 end

@@ -3,7 +3,7 @@ function _scuba_sub_remove
         return
     end
 
-    set -l arg $argv[1]
+    set -l arg (string lower $argv[1])
 
     if set -e _scuba_plugins[(contains --index $arg $_scuba_plugins)]
         set -l argEscaped (string escape --style=var $arg)
@@ -19,9 +19,7 @@ function _scuba_sub_remove
 
         set -e _scuba_"$argEscaped"_files
 
-        set_color --bold blue
-        printf '%s\n' "$arg removed!"
-        set_color normal
+        printf '%s' (set_color --italics --bold brblue) "$arg removed!" (set_color normal) \n
     else
         printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $arg" \n
     end

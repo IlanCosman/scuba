@@ -3,7 +3,7 @@ function _scuba_sub_install
         return
     end
 
-    set -l arg $argv[1]
+    set -l arg (string lower $argv[1])
     set -l argEscaped (string escape --style=var $arg)
     set -l location /tmp/scuba/$argEscaped
 
@@ -42,9 +42,7 @@ function _scuba_sub_install
     set -U _scuba_"$argEscaped"_files (string replace $location '' $location/{completions,conf.d,functions}/**)
     set -l fileVarName _scuba_"$argEscaped"_files
 
-    set_color --bold blue
-    printf '%s\n' "$arg installed!"
-    set_color normal
+    printf '%s' (set_color --italics --bold brblue) "$arg installed!" (set_color normal) \n
 
     exec fish --init-command="set -g fish_greeting
     if test -n \"$updating\"
