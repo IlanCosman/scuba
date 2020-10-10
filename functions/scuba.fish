@@ -37,3 +37,10 @@ function _scuba_help
         $b"  list$n                  list all installed plugins" \
         $b"  bug-report$n            print info for use in bug reports"
 end
+
+function _scuba_uninstall --on-event scuba_uninstall
+    for name in $_scuba_plugins
+        set -e _scuba_(string escape --style=var $name)_files
+    end
+    set -e _scuba_plugins
+end

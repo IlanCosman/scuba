@@ -18,7 +18,7 @@ Manage functions, completions, bindings, and snippets from the command line. Ext
 #### Bootstrap scuba
 
 ```console
-curl -L git.io/scuba-install | source && _scuba_sub_install IlanCosman/scuba
+curl -sL git.io/scuba-install | source && _scuba_sub_install ilancosman/scuba
 ```
 
 ## Quickstart
@@ -42,7 +42,7 @@ scuba install patrickf3139/fzf.fish@v4.1
 You can add plugins from local directories too.
 
 ```console
-scuba install ~/path/to/local/plugin
+scuba install ~/path/to/my/fish/plugin
 ```
 
 ### Listing plugins
@@ -51,13 +51,13 @@ List all explicitly installed plugins using the `list` command.
 
 ```console
 scuba list
-IlanCosman/scuba
+ilancosman/scuba
 rafaelrinaldi/pure
 patrickf3139/fzf.fish@v4.1
-~/path/to/myfish/plugin
+~/path/to/my/fish/plugin
 ```
 
-> `IlanCosman/scuba` is listed because scuba is just another plugin.
+> `ilanCosman/scuba` is listed because you installed it to start with!
 
 ### Updating plugins
 
@@ -85,7 +85,7 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 
 ## Acknowledgements
 
-[Fisher][] - Inspired much of Scuba's documentation and design.
+- [Fisher][] - Inspired much of Scuba's documentation and design.
 
 [actions]: https://github.com/IlanCosman/scuba/actions
 [ci_badge]: https://github.com/IlanCosman/scuba/workflows/CI/badge.svg
