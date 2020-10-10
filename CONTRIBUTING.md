@@ -14,7 +14,7 @@ If you have any questions that aren't addressed in this document, please don't h
 - `test` > `[...]`
 - `printf` > `echo`
 - Long forms of flags > short forms
-  - Exceptions: `set`, `function foo -a`, "common knowledge" options for commands like `rm -r`
+  - Exceptions: `set`, `function foo -a`, "common knowledge" options for commands like `rm -R`
   - Note that MacOS utils often do not support long flags, in which case one should use the short option
 - Piping > command substitution (only when convenient, i.e no extra commands)
 

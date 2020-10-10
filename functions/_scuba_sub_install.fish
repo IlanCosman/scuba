@@ -18,12 +18,13 @@ function _scuba_sub_install
         exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
     end
 
-    rm -rf $location
+    rm -Rf $location
     mkdir -p $location/{completions,conf.d,functions}
 
-    if test -e $argSplit[1]
-        cp -r $argSplit[1] $location
-    else if curl --silent https://codeload.github.com/$argSplit[1]/tar.gz/$argSplit[2] | tar --extract --gzip --strip-components 1 --directory $location 2>/dev/null
+    if test -e $arg
+        cp -R $arg/* $location
+    else if curl --silent https://codeload.github.com/$argSplit[1]/tar.gz/$argSplit[2] |
+        tar --extract --gzip --strip-components 1 --directory $location 2>/dev/null
     else
         printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $arg" \n
         exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
