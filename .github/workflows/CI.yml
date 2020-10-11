@@ -10,6 +10,25 @@ on:
   pull_request:
 
 jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: fish {0}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: fish-actions/install-fish@v1
+
+      - name: Install Scuba
+        run: |
+          source $GITHUB_WORKSPACE/functions/_scuba_sub_install.fish
+          _scuba_sub_install $GITHUB_WORKSPACE
+
+      - run: scuba --version
+
   prettier:
     runs-on: ubuntu-latest
 
