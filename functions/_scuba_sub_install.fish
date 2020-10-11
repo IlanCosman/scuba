@@ -3,9 +3,10 @@ function _scuba_sub_install
         return
     end
 
-    set -l arg (string lower $argv[1])
-    if test -e $arg
-        set arg (realpath $arg)
+    if test -e $argv[1]
+        set arg (realpath $argv[1])
+    else
+        set arg (string lower $argv[1])
     end
 
     set -l argEscaped (string escape --style=var $arg)
