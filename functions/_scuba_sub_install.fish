@@ -9,9 +9,6 @@ function _scuba_sub_install
         set arg (string lower $argv[1])
     end
 
-    set -l argEscaped (string escape --style=var $arg)
-    set -l location /tmp/scuba/$argEscaped
-
     if not set -l argSplit (string split '@' $arg)
         set argSplit[2] HEAD
     end
@@ -22,6 +19,9 @@ function _scuba_sub_install
         printf '%s' (set_color --bold red) "error: " (set_color normal) "another version of this plugin is already installed: $arg" \n
         exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
     end
+
+    set -l argEscaped (string escape --style=var $arg)
+    set -l location /tmp/scuba/$argEscaped
 
     rm -Rf $location
     mkdir -p $location/{completions,conf.d,functions}
