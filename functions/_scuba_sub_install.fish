@@ -19,7 +19,7 @@ function _scuba_sub_install
         set updating true
     else if contains $argSplit[1] (string split '@' $_scuba_plugins)
         printf '%s' (set_color --bold red) "error: " (set_color normal) "another version of this plugin is already installed: $arg" \n
-        exec fish --init-command="_scuba_sub_install $argv[2..-1]"
+        exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
     end
 
     rm -Rf $location
@@ -31,7 +31,7 @@ function _scuba_sub_install
         tar --extract --gzip --strip-components 1 --directory $location 2>/dev/null
     else
         printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $arg" \n
-        exec fish --init-command="_scuba_sub_install $argv[2..-1]"
+        exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
     end
 
     set -l fileVarName _scuba_"$argEscaped"_files
@@ -53,7 +53,7 @@ function _scuba_sub_install
 
     set -U _scuba_"$argEscaped"_files (string replace $location '' $location/{completions,conf.d,functions}/**)
 
-    exec fish --init-command="
+    exec fish --init-command="set -g fish_greeting
     if test -n \"$updating\"
         for file in (basename -s .fish $$fileVarName)
             emit \$file'_update'
