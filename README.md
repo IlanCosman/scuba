@@ -1,12 +1,12 @@
 # Scuba [![ci_badge][]][actions] [![fish_version_badge][]][fish] [![license_badge][]][license]
 
-> A minimal plugin manager for the friendly interactive shell.
+> 🤿 Scuba - It's how you swim with the [fish][]
 
-Manage functions, completions, bindings, and snippets from the command line. Extend your shell capabilities, change the look of your prompt and create repeatable configurations across different systems effortlessly.
+Scuba is a minimal plugin manager for the friendly interactive shell. Extend your shell's capabilities, change the look of your prompt, and create repeatable configurations across systems.
 
-- Oh My Fish! plugin support.
-- Build and distribute shell scripts in a portable way.
+- Oh My Fish and Fisher plugin support.
 - Zero configuration out of the box.
+- Robust install, update, and uninstall event system.
 
 ## Installation
 
@@ -22,8 +22,6 @@ curl -sL git.io/scuba-install | source && _scuba_sub_install ilancosman/scuba
 ```
 
 ## Quickstart
-
-You've found an interesting utility you'd like to try out, or maybe you've [created a new plugin][]. How do you install it? How do you update or remove it?
 
 ### Installing plugins
 
@@ -90,7 +88,7 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 [actions]: https://github.com/IlanCosman/scuba/actions
 [ci_badge]: https://github.com/IlanCosman/scuba/workflows/CI/badge.svg
 [contributing guide]: CONTRIBUTING.md
-[created a new plugin]: docs/creating_plugins.md
+[created a new one]: docs/creating_plugins.md
 [curl]: https://curl.haxx.se/
 [fish_version_badge]: https://img.shields.io/badge/fish-3.1.0%2B-blue
 [fish]: https://fishshell.com/
