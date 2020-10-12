@@ -1,21 +1,19 @@
 function _scuba_sub_install
     if test -z "$argv"
         return
-    end
-
-    if test -e $argv[1]
+    else if test -e $argv[1]
         set arg (realpath $argv[1])
     else
         set arg (string lower $argv[1])
-    end
-
-    if not set -l argSplit (string split '@' $arg)
-        set argSplit[2] HEAD
+        
+        if not set argSplit (string split '@' $arg)
+            set argSplit[2] HEAD
+        end
     end
 
     if contains $arg $_scuba_plugins
         set updating true
-    else if contains $argSplit[1] (string split '@' $_scuba_plugins)
+    else if contains "$argSplit[1]" (string split '@' $_scuba_plugins)
         printf '%s' (set_color --bold red) "error: " (set_color normal) "another version of this plugin is already installed: $arg" \n
         exec fish --init-command="set -g fish_greeting; _scuba_sub_install $argv[2..-1]"
     end

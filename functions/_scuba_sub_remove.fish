@@ -1,8 +1,4 @@
 function _scuba_sub_remove
-    if test -z "$argv"
-        return
-    end
-
     set -l arg (string lower $argv[1])
 
     if set -e _scuba_plugins[(contains --index $arg $_scuba_plugins)]
@@ -24,5 +20,8 @@ function _scuba_sub_remove
         printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $arg" \n
     end
 
-    exec fish --init-command="set -g fish_greeting; _scuba_sub_remove $argv[2..-1]"
+    exec fish --init-command="set -g fish_greeting
+    if test -n \"$argv[2..-1]\"
+        _scuba_sub_remove $argv[2..-1]
+    end" # Use if test -n so that when removing Scuba you don't get errors
 end

@@ -1,6 +1,6 @@
 # Scuba [![ci_badge][]][actions] [![fish_version_badge][]][fish] [![license_badge][]][license]
 
-> A plugin manager for the friendly interactive shell.
+> A minimal plugin manager for the friendly interactive shell.
 
 Manage functions, completions, bindings, and snippets from the command line. Extend your shell capabilities, change the look of your prompt and create repeatable configurations across different systems effortlessly.
 
@@ -75,7 +75,7 @@ Remove plugins using the `remove` command.
 scuba remove rafaelrinaldi/pure
 ```
 
-Since scuba is just like any other plugin, you can uninstall it using `scuba remove IlanCosman/scuba`.
+Since scuba is just like any other plugin, you can uninstall it using `scuba remove ilancosman/scuba`.
 
 ## Contributing
 
