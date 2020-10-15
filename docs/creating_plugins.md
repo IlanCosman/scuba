@@ -2,7 +2,7 @@
 
 ## Event system
 
-Scuba has a robust install, update, and uninstall event system. Remember that functions with event handlers must already be greedily loaded. Thus, you should put your event handlers in the `conf.d` directory. Real world examples are the easiest way of understanding this.
+Scuba has a robust install, update, and uninstall event system. Remember that functions with event handlers must already be loaded when their event is emitted. Thus, you should put your event handlers in the `conf.d` directory.
 
 ### Install
 
@@ -19,8 +19,6 @@ end
 
 ### Update
 
-When updating, the `update` event is emitted, followed by the `install` event.
-
 ```fish
 # File conf.d/blah.fish
 
@@ -30,6 +28,7 @@ function _blah_update --on-event blah_update
         echo "Welcome to version 3.0 of blah!"
         echo "Here are some breaking changes you might want to know about:"
         # list breaking changes...
+        echo "Please remove and reinstall blah."
     end
 end
 ```
