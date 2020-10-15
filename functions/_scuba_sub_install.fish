@@ -4,10 +4,10 @@ function _scuba_sub_install
             set arg (realpath $arg)
         else
             set arg (string lower $arg)
+        end
 
-            if not set argSplit (string split '@' $arg)
-                set argSplit[2] HEAD
-            end
+        if not set -l argSplit (string split '@' $arg)
+            set argSplit[2] HEAD
         end
 
         if contains $arg $_scuba_plugins
@@ -41,11 +41,11 @@ function _scuba_sub_install
         end
         cp -R $location/{completions,conf.d,functions} $__fish_config_dir
 
-        for file in $__fish_config_dir/{conf.d,functions}/*
-            source $file 2>/dev/null
-        end
+        set -U _scuba_"$argEscaped"_files (string replace $location '' $location/{completions,conf.d,functions}/*)
 
-        set -U _scuba_"$argEscaped"_files (string replace $location '' $location/{completions,conf.d,functions}/**)
+        for file in $$fileVarName
+            source $__fish_config_dir/$file 2>/dev/null
+        end
 
         set -l basenamedFiles (basename -s .fish $$fileVarName)
         if test -n "$updating"

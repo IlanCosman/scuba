@@ -11,9 +11,7 @@ function _scuba_sub_remove
             
             functions -e $basenamedFiles
             
-            # Use -R to remove any custom directories
-            # Ignore errors as some files may have been in previously removed directories
-            rm -R $__fish_config_dir/$$fileVarName 2>/dev/null
+            rm -R $__fish_config_dir/$$fileVarName
 
             set -e _scuba_"$argEscaped"_files
 
