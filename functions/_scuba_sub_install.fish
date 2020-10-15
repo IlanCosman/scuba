@@ -34,17 +34,13 @@ function _scuba_sub_install
 
         set -l fileVarName _scuba_"$argEscaped"_files
 
-        rm -R $__fish_config_dir/$$fileVarName 2>/dev/null # If _scuba_"$argEscaped"_files already exists, remove all those files
-
-        if string match --quiet --regex "\.fish\$" $location/* # If there are any top level fish files
-            cp $location/*.fish $location/functions # copy them into location's function directory
-        end
+        cp (string match --entire --regex "\.fish\$" $location/*) $location/functions 2>/dev/null
         cp -R $location/{completions,conf.d,functions} $__fish_config_dir
 
         set -U _scuba_"$argEscaped"_files (string replace $location '' $location/{completions,conf.d,functions}/*)
 
-        for file in $$fileVarName
-            source $__fish_config_dir/$file 2>/dev/null
+        for file in (string replace $location '' $location/{conf.d,functions}/*)
+            source $__fish_config_dir/$file 2>/dev/null # Ignore errors, we might source some directories
         end
 
         set -l basenamedFiles (basename -s .fish $$fileVarName)
