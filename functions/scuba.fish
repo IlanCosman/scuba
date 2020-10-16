@@ -1,5 +1,4 @@
 function scuba
-    set_color normal
     argparse --stop-nonopt 'v/version' 'h/help' -- $argv
 
     if set -q _flag_version

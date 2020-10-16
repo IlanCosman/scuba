@@ -4,17 +4,15 @@ function _scuba_sub_install
             set arg (realpath $arg)
         else
             set arg (string lower $arg)
-        end
 
-        if not set -l argSplit (string split '@' $arg)
-            set argSplit[2] HEAD
-        end
+            if not set argSplit (string split '@' $arg)
+                set argSplit[2] HEAD
+            end
 
-        if contains $arg $_scuba_plugins
-            set updating true
-        else if contains "$argSplit[1]" (string split '@' $_scuba_plugins)
-            printf '%s' (set_color --bold red) "error: " (set_color normal) "another version of this plugin is already installed: $arg" \n
-            continue
+            if not contains $arg $_scuba_plugins && contains "$argSplit[1]" (string split '@' $_scuba_plugins)
+                printf '%s' (set_color --bold red) "error: " (set_color normal) "another version of this plugin is already installed: $arg" \n
+                continue
+            end
         end
 
         set -l argEscaped (string escape --style=var $arg)
@@ -32,18 +30,17 @@ function _scuba_sub_install
             continue
         end
 
-        set -l fileVarName _scuba_"$argEscaped"_files
-
         cp (string match --entire --regex "\.fish\$" $location/*) $location/functions 2>/dev/null
         cp -R $location/{completions,conf.d,functions} $__fish_config_dir
 
-        set -U _scuba_"$argEscaped"_files (string replace $location '' $location/{completions,conf.d,functions}/*)
-
-        for file in (string replace $location '' $location/{conf.d,functions}/*)
-            source $__fish_config_dir/$file 2>/dev/null # Ignore errors, we might source some directories
+        for file in $location/{conf.d,functions}/*.fish
+            source $file
         end
 
-        if test -n "$updating"
+        set -l fileVarName _scuba_"$argEscaped"_files
+        set -U $fileVarName (string replace $location '' $location/{completions,conf.d,functions}/*)
+
+        if contains $arg $_scuba_plugins
             printf '%s' (set_color --italics --bold brblue) "$arg updated!" (set_color normal) \n
             for file in (basename -s .fish $$fileVarName)
                 emit "$file"_update
