@@ -32,8 +32,7 @@ function _scuba_help
         $b"  install$n <plugins...>  install plugins" \
         $b"  remove$n <plugins...>   remove installed plugins" \
         $b"  update$n <plugins...>   update installed plugins" \
-        $b"  list$n                  list all installed plugins" \
-        $b"  bug-report$n            print info for use in bug reports"
+        $b"  list$n                  list all installed plugins"
 end
 
 function _scuba_uninstall --on-event scuba_uninstall

@@ -27,7 +27,7 @@ assignees: ""
 #### Environment (please complete the following information)
 
 - Operating System: <!-- e.g. Ubuntu 20.04 -->
-- Output of `scuba bug-report`: <!-- In the code block below -->
+- Output of `fish --version` and `scuba --version`: <!-- In the code block below -->
 
 ```console
 
