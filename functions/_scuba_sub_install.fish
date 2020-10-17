@@ -18,7 +18,7 @@ function _scuba_sub_install
         set -l argEscaped (string escape --style=var $arg)
         set -l location /tmp/scuba/$argEscaped
 
-        rm -R $location
+        rm -Rf $location
         mkdir -p $location/{completions,conf.d,functions}
 
         if test -e $arg
@@ -42,13 +42,13 @@ function _scuba_sub_install
 
         if contains $arg $_scuba_plugins
             printf '%s' (set_color --italics --bold brblue) "$arg updated!" (set_color normal) \n
-            for file in (basename -s .fish $$fileVarName)
+            for file in (string replace --regex '^.*/' '' $$fileVarName | string replace --regex '\.fish$' '')
                 emit "$file"_update
             end
         else
             set -Ua _scuba_plugins $arg
             printf '%s' (set_color --italics --bold brblue) "$arg installed!" (set_color normal) \n
-            for file in (basename -s .fish $$fileVarName)
+            for file in (string replace --regex '^.*/' '' $$fileVarName | string replace --regex '\.fish$' '')
                 emit "$file"_install
             end
         end

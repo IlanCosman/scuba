@@ -4,7 +4,7 @@ function _scuba_sub_remove
             set -l argEscaped (string escape --style=var $arg)
             set -l fileVarName _scuba_"$argEscaped"_files
 
-            set -l basenamedFiles (basename -s .fish $$fileVarName)
+            set -l basenamedFiles (string replace --regex '^.*/' '' $$fileVarName | string replace --regex '\.fish$' '')
             for file in $basenamedFiles
                 emit "$file"_uninstall
             end

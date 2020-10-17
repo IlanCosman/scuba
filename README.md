@@ -18,7 +18,7 @@ Scuba is a minimal plugin manager for the friendly interactive shell. Extend you
 #### Bootstrap scuba
 
 ```console
-curl -sL git.io/scuba-install | source && _scuba_sub_install ilancosman/scuba
+curl -sL https://git.io/scuba-install | source && _scuba_sub_install ilancosman/scuba
 ```
 
 ## Quickstart
