@@ -15,9 +15,9 @@ function _scuba_sub_remove
 
             set -e $fileVarName
 
-            printf '%s' (set_color --italics --bold brblue) "$arg removed!" (set_color normal) \n
+            printf '%s' $_scuba_success "$arg removed" \n
         else
-            printf '%s' (set_color --bold red) "error: " (set_color normal) "target not found: $arg" \n
+            printf '%s' $_scuba_error "$arg not found" \n
         end
     end
 end

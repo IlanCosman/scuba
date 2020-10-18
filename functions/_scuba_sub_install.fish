@@ -19,7 +19,7 @@ function _scuba_sub_install
         else if curl --silent https://codeload.github.com/$argSplit[1]/tar.gz/$argSplit[2] |
             tar --extract --gzip --strip-components 1 --directory $location 2>/dev/null
         else
-            printf '%s' (set_color --bold red) 'error: ' (set_color normal) "target not found: $arg" \n
+            printf '%s' $_scuba_error "$arg not found" \n
             continue
         end
 
@@ -30,15 +30,15 @@ function _scuba_sub_install
         if not contains $arg $_scuba_plugins
             for plugin in $_scuba_plugins
                 set -l pluginFileVarName _scuba_(string escape --style=var $plugin)_files
-                for file in $$pluginFileVarName
-                    if contains $file $currentFiles
+                for file in $currentFiles
+                    if contains $file $$pluginFileVarName
                         set -a conflictList $plugin
                         break
                     end
                 end
             end
             if test -n "$conflictList"
-                printf '%s\n' "$arg conflicts with these plugins:" $conflictList
+                printf '%s' $_scuba_warning "$arg conflicts with these plugins:" \n $conflictList\n \n
                 set -e conflictList
                 switch (read --prompt-str="Install anyway? [y/N] ")
                     case y Y yes Yes
@@ -57,13 +57,13 @@ function _scuba_sub_install
         end
 
         if contains $arg $_scuba_plugins
-            printf '%s' (set_color --italics --bold brblue) "$arg updated!" (set_color normal) \n
+            printf '%s' $_scuba_success "$arg updated" \n
             for file in (string replace --regex '^.*/' '' $currentFiles | string replace --regex '\.fish$' '')
                 emit "$file"_update
             end
         else
             set -Ua _scuba_plugins $arg
-            printf '%s' (set_color --italics --bold brblue) "$arg installed!" (set_color normal) \n
+            printf '%s' $_scuba_success "$arg installed" \n
             for file in (string replace --regex '^.*/' '' $currentFiles | string replace --regex '\.fish$' '')
                 emit "$file"_install
             end
