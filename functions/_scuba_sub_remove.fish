@@ -8,12 +8,12 @@ function _scuba_sub_remove
             for file in $basenamedFiles
                 emit "$file"_uninstall
             end
-            
+
             functions -e $basenamedFiles
 
             rm -R $__fish_config_dir/$$fileVarName
 
-            set -e _scuba_"$argEscaped"_files
+            set -e $fileVarName
 
             printf '%s' (set_color --italics --bold brblue) "$arg removed!" (set_color normal) \n
         else
