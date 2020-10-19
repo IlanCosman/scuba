@@ -40,8 +40,8 @@ function _scuba_sub_install
             if test -n "$conflictList"
                 printf '%s' $_scuba_warning "$arg conflicts with these plugins:" \n $conflictList\n \n
                 set -e conflictList
-                switch (read --prompt-str="Install anyway? [y/N] ")
-                    case y Y yes Yes
+                switch (read --prompt-str="Install anyway? [y/N] " | string lower)
+                    case y ye yes
                     case '*'
                         continue
                 end

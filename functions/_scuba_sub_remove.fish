@@ -1,8 +1,7 @@
 function _scuba_sub_remove
     for arg in $argv
         if set -e _scuba_plugins[(contains --index $arg $_scuba_plugins)] 2>/dev/null
-            set -l argEscaped (string escape --style=var $arg)
-            set -l fileVarName _scuba_"$argEscaped"_files
+            set -l fileVarName _scuba_(string escape --style=var $arg)_files
 
             set -l basenamedFiles (string replace --regex '^.*/' '' $$fileVarName | string replace --regex '\.fish$' '')
             for file in $basenamedFiles
