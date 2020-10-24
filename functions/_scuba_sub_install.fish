@@ -10,11 +10,9 @@ function _scuba_sub_install
             end
         end
 
-        set -l location /tmp/scuba/(string escape --style=var $arg)
+        set -l location (mktemp -d)
         set -l locationDirs $location/{completions,conf.d,functions}
-
-        rm -Rf $location
-        mkdir -p $locationDirs
+        mkdir $locationDirs
 
         if test -e $arg
             cp -R $arg/* $location
