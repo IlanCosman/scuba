@@ -11,8 +11,10 @@ function _scuba_sub_install
         end
 
         set -l location /tmp/scuba/(string escape --style=var $arg)
+        set -l locationDirs $location/{completions,conf.d,functions}
+
         rm -Rf $location
-        mkdir -p $location/{completions,conf.d,functions}
+        mkdir -p $locationDirs
 
         if test -e $arg
             cp -R $arg/* $location
@@ -25,7 +27,9 @@ function _scuba_sub_install
 
         cp (string match --entire --regex '\.fish$' $location/*) $location/functions 2>/dev/null
 
-        set -l currentFiles (string replace $location '' $location/{completions,conf.d,functions}/*)
+        rm -f $locationDirs/uninstall.fish
+
+        set -l currentFiles (string replace $location '' $locationDirs/*)
 
         if not contains $arg $_scuba_plugins
             for plugin in $_scuba_plugins
@@ -37,7 +41,7 @@ function _scuba_sub_install
                     end
                 end
             end
-            if test -n "$conflictList"
+            if set -q conflictList
                 printf '%s' $_scuba_warning "$arg conflicts with these plugins:" \n $conflictList\n \n
                 set -e conflictList
                 switch (read --prompt-str="Install anyway? [y/N] " | string lower)
@@ -50,7 +54,7 @@ function _scuba_sub_install
 
         set -U _scuba_(string escape --style=var $arg)_files $currentFiles
 
-        cp -R $location/{completions,conf.d,functions} $__fish_config_dir
+        cp -R $locationDirs $__fish_config_dir
 
         for file in $location/{conf.d,functions}/*.fish
             source $file
@@ -58,13 +62,13 @@ function _scuba_sub_install
 
         if contains $arg $_scuba_plugins
             printf '%s' $_scuba_success "$arg updated" \n
-            for file in (string replace --regex '^.*/' '' $currentFiles | string replace --regex '\.fish$' '')
+            for file in (string replace --all --regex '(^.*/|\.fish$)' '' $currentFiles)
                 emit "$file"_update
             end
         else
             set -Ua _scuba_plugins $arg
             printf '%s' $_scuba_success "$arg installed" \n
-            for file in (string replace --regex '^.*/' '' $currentFiles | string replace --regex '\.fish$' '')
+            for file in (string replace --all --regex '(^.*/|\.fish$)' '' $currentFiles)
                 emit "$file"_install
             end
         end
