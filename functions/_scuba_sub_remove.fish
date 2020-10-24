@@ -3,7 +3,7 @@ function _scuba_sub_remove
         if set -e _scuba_plugins[(contains --index $arg $_scuba_plugins)] 2>/dev/null
             set -l fileVarName _scuba_(string escape --style=var $arg)_files
 
-            set -l basenamedFiles (string replace --all --regex '(^.*/|\.fish$)' '' $currentFiles)
+            set -l basenamedFiles (string replace --all --regex '(^.*/|\.fish$)' '' $$fileVarName)
             for file in $basenamedFiles
                 emit "$file"_uninstall
             end
