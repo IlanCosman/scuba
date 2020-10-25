@@ -5,17 +5,10 @@
 Scuba is a minimal plugin manager for the friendly interactive shell. Extend your shell's capabilities, change the look of your prompt, and create repeatable configurations across systems.
 
 - Oh My Fish and Fisher plugin support.
-- Zero configuration out of the box.
-- Robust install, update, and uninstall event system.
+- Minimal and elegant design following fish philosophy.
+- Install, update, and uninstall event system.
 
-## Installation
-
-### System requirements
-
-- [curl][]
-- [fish][] ≥ 3.1
-
-#### Bootstrap scuba
+## Bootstrap Scuba
 
 ```console
 curl -sL https://git.io/scuba-install | source && _scuba_sub_install ilancosman/scuba
@@ -25,13 +18,13 @@ curl -sL https://git.io/scuba-install | source && _scuba_sub_install ilancosman/
 
 ### Installing plugins
 
-Install plugins using the `install` command followed by the path to the repository on GitHub. The shell is restarted after installing plugins, so you can start using them immediately.
+Install plugins using the `install` command followed by the path to the repository on GitHub.
 
 ```console
 scuba install rafaelrinaldi/pure
 ```
 
-For a specific version of a plugin add an `@` symbol after the plugin name followed by the tag, branch, or commit. Only one plugin version can be installed at any given time.
+For a specific version of a plugin add an `@` symbol after the plugin name followed by the tag, branch, or commit.
 
 ```console
 scuba install patrickf3139/fzf.fish@v4.1
@@ -45,17 +38,17 @@ scuba install ~/path/to/my/fish/plugin
 
 ### Listing plugins
 
-List all explicitly installed plugins using the `list` command.
+List installed plugins using the `list` command.
 
 ```console
 scuba list
 ilancosman/scuba
 rafaelrinaldi/pure
 patrickf3139/fzf.fish@v4.1
-~/path/to/my/fish/plugin
+/home/ilan/path/to/my/fish/plugin
 ```
 
-> `ilanCosman/scuba` is listed because you installed it to start with!
+> `ilancosman/scuba` is listed because you installed it to start with!
 
 ### Updating plugins
 
@@ -89,7 +82,6 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 [ci_badge]: https://github.com/IlanCosman/scuba/workflows/CI/badge.svg
 [contributing guide]: CONTRIBUTING.md
 [created a new one]: docs/creating_plugins.md
-[curl]: https://curl.haxx.se/
 [fish_version_badge]: https://img.shields.io/badge/fish-3.1.0%2B-blue
 [fish]: https://fishshell.com/
 [fisher]: https://github.com/jorgebucaran/fisher
