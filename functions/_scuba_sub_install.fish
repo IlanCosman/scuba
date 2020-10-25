@@ -25,6 +25,7 @@ function _scuba_sub_install
         else
             printf '%s' \"$_scuba_error\" \"$arg not found\" \n
             rm -R $location
+            exit
         end
 
         cp (string match --entire --regex '\.fish\$' $location/*) $location/functions 2>/dev/null

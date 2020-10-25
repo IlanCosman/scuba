@@ -59,7 +59,7 @@ scuba list '^/'
 
 ### Updating plugins
 
-Update plugins using the `update` command. If given no arguments, `scuba update` will update all installed plugins, including scuba itself.
+Update plugins using the `update` command. `update` by itself will update all installed plugins, including scuba itself.
 
 ```console
 scuba update
