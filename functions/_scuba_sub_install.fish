@@ -1,31 +1,13 @@
 function _scuba_sub_install
     for arg in $argv
-        if test -e $arg
-            set arg (realpath $arg)
-        else
-            set arg (string lower $arg)
+        fish --command "_scuba_fetch $arg" &
+        set -a pidList (jobs --last --pid)
+    end
+    wait $pidList
 
-            if not set argSplit (string split '@' $arg)
-                set argSplit[2] HEAD
-            end
-        end
-
-        set -l location (mktemp -d)
+    for arg in $argv
+        set -l location /tmp/scuba/(string escape --style var $arg)
         set -l locationDirs $location/{completions,conf.d,functions}
-        mkdir $locationDirs
-
-        if test -e $arg
-            cp -R $arg/* $location
-        else if curl --silent https://codeload.github.com/$argSplit[1]/tar.gz/$argSplit[2] |
-            tar --extract --gzip --strip-components 1 --directory $location 2>/dev/null
-        else
-            printf '%s' $_scuba_error "$arg not found" \n
-            continue
-        end
-
-        cp (string match --entire --regex '\.fish$' $location/*) $location/functions 2>/dev/null
-
-        rm -f $locationDirs/uninstall.fish
 
         set -l currentFiles (string replace $location '' $locationDirs/*)
 
