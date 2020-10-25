@@ -1,17 +1,9 @@
-function _scuba_fetch -a arg
-    if test -e $arg
-        set arg (realpath $arg)
-    else
-        set arg (string lower $arg)
-
-        if not set argSplit (string split '@' $arg)
-            set argSplit[2] HEAD
-        end
+function _scuba_fetch -a arg location
+    if not set argSplit (string split '@' $arg)
+        set argSplit[2] HEAD
     end
 
-    set -l location /tmp/scuba/(string escape --style var $arg)
-    set -l locationDirs $location/{completions,conf.d,functions}
-    mkdir -p $locationDirs
+    mkdir $location/{completions,conf.d,functions}
 
     if test -e $arg
         cp -R $arg/* $location
@@ -19,9 +11,11 @@ function _scuba_fetch -a arg
         tar --extract --gzip --strip-components 1 --directory $location 2>/dev/null
     else
         printf '%s' $_scuba_error "$arg not found" \n
+        rm -R $location
+        return
     end
 
     cp (string match --entire --regex '\.fish$' $location/*) $location/functions 2>/dev/null
 
-    rm -f $locationDirs/uninstall.fish
+    rm -f $location/{completions,conf.d,functions}/uninstall.fish
 end

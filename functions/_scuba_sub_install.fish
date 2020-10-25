@@ -1,15 +1,29 @@
 function _scuba_sub_install
     for arg in $argv
-        fish --command "_scuba_fetch $arg" &
+        if test -e $arg
+            set argv[(contains --index $arg $argv)] (realpath $arg)
+        else
+            set argv[(contains --index $arg $argv)] (string lower $arg)
+        end
+    end
+
+    for arg in $argv
+        set -l location (mktemp -d)
+        set -a locationList $location
+
+        fish --command "_scuba_fetch $arg $location" &
         set -a pidList (jobs --last --pid)
     end
     wait $pidList
 
     for arg in $argv
-        set -l location /tmp/scuba/(string escape --style var $arg)
-        set -l locationDirs $location/{completions,conf.d,functions}
+        set -l location $locationList[(contains --index $arg $argv)]
 
-        set -l currentFiles (string replace $location '' $locationDirs/*)
+        if not test -e $location
+            continue
+        end
+
+        set -l currentFiles (string replace $location '' $location/{completions,conf.d,functions}/*)
 
         if not contains $arg $_scuba_plugins
             set -l conflictList
@@ -34,7 +48,7 @@ function _scuba_sub_install
 
         set -U _scuba_(string escape --style var $arg)_files $currentFiles
 
-        cp -R $locationDirs $__fish_config_dir
+        cp -R $location/{completions,conf.d,functions} $__fish_config_dir
 
         for file in $location/{conf.d,functions}/*.fish
             source $file
