@@ -50,6 +50,13 @@ patrickf3139/fzf.fish@v4.1
 
 > `ilancosman/scuba` is listed because you installed it to start with!
 
+You can use a regular expression after `list` to refine the output.
+
+```console
+scuba list '^/'
+/home/ilan/path/to/my/fish/plugin
+```
+
 ### Updating plugins
 
 Update plugins using the `update` command. If given no arguments, `scuba update` will update all installed plugins, including scuba itself.

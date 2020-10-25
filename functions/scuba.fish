@@ -30,5 +30,5 @@ function _scuba_help
         $b"  install$n <plugins...>  install plugins" \
         $b"  remove$n <plugins...>   remove installed plugins" \
         $b"  update$n <plugins...>   update installed plugins" \
-        $b"  list$n                  list all installed plugins"
+        $b"  list$n                  list installed plugins matching regex"
 end
