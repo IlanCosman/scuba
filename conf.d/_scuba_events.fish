@@ -9,7 +9,7 @@ function _scuba_uninstall --on-event _scuba_events_uninstall
     set -e _scuba_success
     set -e _scuba_warning
 
-    for name in (string escape --style=var $_scuba_plugins)
+    for name in (string escape --style var $_scuba_plugins)
         set -e _scuba_"$name"_files
     end
     set -e _scuba_plugins

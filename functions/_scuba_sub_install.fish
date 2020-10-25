@@ -32,7 +32,7 @@ function _scuba_sub_install
         if not contains $arg $_scuba_plugins
             set -l conflictList
             for plugin in $_scuba_plugins
-                set -l pluginFileVarName _scuba_(string escape --style=var $plugin)_files
+                set -l pluginFileVarName _scuba_(string escape --style var $plugin)_files
                 for file in $currentFiles
                     if contains $file $$pluginFileVarName
                         set -a conflictList $plugin
@@ -42,7 +42,7 @@ function _scuba_sub_install
             end
             if test -n "$conflictList"
                 printf '%s' $_scuba_warning "$arg conflicts with these plugins:" \n $conflictList\n \n
-                switch (read --prompt-str="Install anyway? [y/N] " | string lower)
+                switch (read --prompt-str "Install anyway? [y/N] " | string lower)
                     case y ye yes
                     case '*'
                         continue
@@ -50,7 +50,7 @@ function _scuba_sub_install
             end
         end
 
-        set -U _scuba_(string escape --style=var $arg)_files $currentFiles
+        set -U _scuba_(string escape --style var $arg)_files $currentFiles
 
         cp -R $locationDirs $__fish_config_dir
 
