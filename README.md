@@ -82,6 +82,10 @@ From the smallest typo to the largest feature, contributions of any size or expe
 
 If you're interested in helping contribute to Scuba, please take a look at the [Contributing Guide][].
 
+## Oh My Fish and Fisher plugin support
+
+In general anywhere you see `fisher add`, you can replace it with `scuba install`. The only minor issue may be `uninstall.fish` since Scuba uses an event system instead of storing the plugin in a permenant directory on your machine. Fisher 4.0, coming out sometime in 2021, will also remove `uninstall.fish` support, so you could say Scuba is simply ahead of the game. All plugin should transition to the [uninstall event system][creating_plugins] that Scuba and Fisher already have.
+
 ## Comparison with Fisher
 
 Scuba is highly inspired by [Fisher][] and operates similarly. What are the advantages and disadvantages? What's simply different?
@@ -124,7 +128,7 @@ Scuba is highly inspired by [Fisher][] and operates similarly. What are the adva
 [blazing_tweet]: https://twitter.com/acdlite/status/974390255393505280
 [ci_badge]: https://github.com/IlanCosman/scuba/workflows/CI/badge.svg
 [contributing guide]: CONTRIBUTING.md
-[created a new one]: docs/creating_plugins.md
+[creating_plugins]: docs/creating_plugins.md
 [design philosophy]: https://fishshell.com/docs/current/design.html
 [fish_version_badge]: https://img.shields.io/badge/fish-3.0.0%2B-blue
 [fish]: https://fishshell.com/
