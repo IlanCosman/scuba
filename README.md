@@ -31,7 +31,7 @@ To get a specific version of a plugin add an `@` symbol after the plugin name fo
 scuba install jorgebucaran/nvm.fish@1.1.0
 ```
 
-You can install plugins from local directories too.
+You can install plugins from local directories as well.
 
 ```console
 scuba install ~/path/to/plugin
@@ -60,11 +60,13 @@ $ scuba list '^/'
 
 ### Updating plugins
 
-The `update` command updates installed plugins. `update` by itself will update all installed plugins, including Scuba.
+The `update` command fetches and installs the latest version of plugins.
 
 ```console
-scuba update
+scuba update patrickf3139/fzf.fish
 ```
+
+`scuba update` by itself will update all installed plugins, including Scuba.
 
 ### Removing plugins
 
@@ -88,7 +90,7 @@ See the [plugin creation guide][creating_plugins] for documentation.
 
 ## Oh My Fish and Fisher plugin support
 
-In general anywhere you see `fisher add`, you can replace it with `scuba install`. The only minor issue may be `uninstall.fish` since Scuba uses an event system instead of storing the plugin in a permenant directory on your machine. Thus, plugins that rely on `uninstall.fish` to remove leftover variables will not do so. Fisher 4.0, coming out sometime in 2021, will also remove `uninstall.fish` support. All plugins should transition to the [uninstall event system][creating_plugins] that Scuba and Fisher already have.
+In general anywhere you see `fisher add`, you can replace it with `scuba install`. The only minor issue may be `uninstall.fish` since Scuba uses an event system instead of storing the plugin in a permenant directory on your machine. Thus, plugins that rely on `uninstall.fish` to remove leftover variables will not do so. Fisher 4.0, coming out sometime in 2021, will also remove `uninstall.fish` support. All plugins should transition to the [uninstall event system][creating_plugins] that Scuba and Fisher use.
 
 ## Comparison with Fisher
 
