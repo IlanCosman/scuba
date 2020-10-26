@@ -84,15 +84,18 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 
 ## Comparison with Fisher
 
-Scuba is highly inspired by [Fisher][], and operates similarly. What are the advantages and disadvantages? What's simply different?
+Scuba is highly inspired by [Fisher][] and operates similarly. What are the advantages and disadvantages? What's simply different?
 
-**TLDR:** Scuba is similar to the [projected fisher 4.0][] but faster, simpler, better maintained, and more in line with fish design philosophy. Unlike Fisher, Scuba does not support file-based configuration or dependencies.
+**TLDR:** Scuba is similar to the [prposed fisher 4.0][], but faster, simpler, better maintained, and more in line with fish design philosophy. Unlike Fisher, Scuba does not support file-based configuration or dependencies.
 
 ### Advantages
 
 - Fast - Since Scuba is pure fish, it is significantly faster than Fisher. However, both are quick in absolute terms.
+
 - Simple - Scuba is less than half of Fisher's SLOC. Scuba is pure fish while Fisher is roughly 15% awk and sed, raising the difficulty of contributing. Scuba has an organized directory structure while Fisher puts all of its many functions in one file, making it more difficult to modify.
-- Better maintained - Fisher has had a little over 30 commits in the last year and a half. Multiple issues have sat for a year or longer without resolution. Scuba was created with the express intention of being better maintained and already solves all of Fisher's longstanding issues.
+
+- Better maintained - Fisher has had a little over 30 commits in the last year and a half. Multiple issues have sat for a year or longer without resolution. Fisher 4.0, meant to fix these issues, was proposed on Jul 31 2020. The maintainer says that he can probably begin work sometime in 2021. Scuba was created with the express intention of being better maintained and already solves all of Fisher's longstanding issues.
+
 - Elegant - Scuba follows fish's [design philosophy][].
   - **The law of orthogonality** - Scuba does more with less. It has no need for `self-update` or `self-uninstall` commands like Fisher. Instead, Scuba is merely another Scuba plugin, bootstrapping itself.
   - **The law of responsiveness** - Scuba downloads plugins concurrently so as to use as little time as possible.
@@ -106,6 +109,7 @@ Scuba is highly inspired by [Fisher][], and operates similarly. What are the adv
 ### Differences
 
 - Commands vs. File-based configuration - Scuba does not offer two seperate approaches for managing plugins. Instead, everything is done via commands.
+
 - Cache fallback - Fisher offers a cache fallback for installed plugins. However, caching doesn't make much sense when downloading and installing a plugin takes under a second. Caching requires that fish create permenant directories on your machine. It has also been the source of multiple bugs for Fisher.
 
 ## Acknowledgements
@@ -125,4 +129,4 @@ Scuba is highly inspired by [Fisher][], and operates similarly. What are the adv
 [fisher]: https://github.com/jorgebucaran/fisher
 [license_badge]: https://img.shields.io/github/license/IlanCosman/scuba
 [license]: LICENSE.md
-[projected fisher 4.0]: https://github.com/jorgebucaran/fisher/issues/582
+[prposed fisher 4.0]: https://github.com/jorgebucaran/fisher/issues/582
