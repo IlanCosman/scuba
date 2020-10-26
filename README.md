@@ -1,12 +1,13 @@
-# Scuba [![ci_badge][]][actions] [![fish_version_badge][]][fish] [![license_badge][]][license]
+# Scuba [![ci_badge][]][actions] [![fish_version_badge][]][fish] [![license_badge][]][license] [![blazing_badge][]][blazing_tweet]
 
 > 🤿 Scuba - It's how you swim with the [fish][]
 
 Scuba is a minimal plugin manager for the friendly interactive shell. Extend your shell's capabilities, change the look of your prompt, and create repeatable configurations across systems.
 
-- Oh My Fish and Fisher plugin support.
-- Minimal and elegant design following fish philosophy.
-- Install, update, and uninstall event system.
+- Oh My Fish and Fisher plugin support
+- Minimal and elegant design following fish philosophy
+- Blazingly fast concurrent plugin downloads
+- 100% pure fish; easy to contribute to
 
 ## Bootstrap Scuba
 
@@ -86,6 +87,8 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 - [Fisher][] - Inspired much of Scuba's documentation and design.
 
 [actions]: https://github.com/IlanCosman/scuba/actions
+[blazing_badge]: https://img.shields.io/badge/speed-blazing%20%F0%9F%94%A5-red
+[blazing_tweet]: https://twitter.com/acdlite/status/974390255393505280
 [ci_badge]: https://github.com/IlanCosman/scuba/workflows/CI/badge.svg
 [contributing guide]: CONTRIBUTING.md
 [created a new one]: docs/creating_plugins.md
