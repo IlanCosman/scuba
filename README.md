@@ -92,7 +92,7 @@ Scuba is highly inspired by [Fisher][] and operates similarly. What are the adva
 
 - Faster - Since Scuba is pure fish, it is significantly faster than Fisher. However, both are quick in absolute terms.
 
-- Simpler - Scuba is less than half of Fisher's SLOC. Scuba is pure fish while Fisher is roughly 15% awk and sed. Scuba has an organized file structure while Fisher puts all of its many functions in one file.
+- Simpler - Scuba is less than half of Fisher's SLOC. Scuba is pure fish while Fisher is roughly 15% awk and sed. Scuba has an organized file structure while Fisher puts everything in one file.
 
 - Better maintained - Fisher has had a little over 30 commits in the last year and a half. Multiple issues have sat for a year or longer without resolution. Fisher 4.0, meant to fix these issues, was proposed on Jul 31 2020. However, the maintainer says that he can probably begin work sometime in 2021, half a year later. Scuba was created with the express intention of being better maintained and already solves all of Fisher's longstanding issues.
 
@@ -104,13 +104,15 @@ Scuba is highly inspired by [Fisher][] and operates similarly. What are the adva
 
 ### Disadvantages
 
-- Scuba does not support dependencies. While this might initially seem like a major flaw, the empirical evidence suggests otherwise. None of the 24 premier plugins/prompts listed on [awesome.fish] have dependencies. Nevertheless, this can be counted as a minor disadvantage.
+- Scuba does not support dependencies. While this might initially seem like a major flaw, the empirical evidence suggests otherwise: 0 of the 24 most popular plugins/prompts listed on [awesome.fish] have dependencies. Nevertheless, this can be counted as a minor disadvantage.
+
+- Scuba does not support installing from websites other than GitHub. This may be added if requested.
 
 ### Differences
 
 - Commands vs. File-based configuration - Scuba does not offer two seperate approaches for managing plugins. Instead, everything is done via commands.
 
-- Cache fallback - Fisher offers a cache fallback for installed plugins. However, caching doesn't make much sense when downloading and installing a plugin takes under a second. Caching requires that Fisher create permenant directories on your machine. It has also been the source of multiple bugs.
+- No cache fallback - Fisher offers a cache fallback for installed plugins. However, caching doesn't make much sense when downloading and installing a plugin takes under a second. Caching requires that Fisher create permenant directories on your machine. It has also been the source of multiple bugs.
 
 ## Acknowledgements
 
