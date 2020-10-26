@@ -19,48 +19,48 @@ curl -sL https://git.io/scuba-install | source && _scuba_sub_install ilancosman/
 
 ### Installing plugins
 
-Install plugins using the `install` command followed by the path to the repository on GitHub.
+The `install` command installs plugins from their repository paths on GitHub.
 
 ```console
-scuba install rafaelrinaldi/pure
+scuba install patrickf3139/fzf.fish
 ```
 
-For a specific version of a plugin add an `@` symbol after the plugin name followed by the tag, branch, or commit.
+To get a specific version of a plugin add an `@` symbol after the plugin name followed by a tag, branch, or commit.
 
 ```console
-scuba install patrickf3139/fzf.fish@v4.1
+scuba install jorgebucaran/nvm.fish@1.1.0
 ```
 
 You can install plugins from local directories too.
 
 ```console
-scuba install ~/path/to/local/plugin
+scuba install ~/path/to/plugin
 ```
 
 ### Listing plugins
 
-List installed plugins using the `list` command.
+The `list` command lists installed plugins.
 
 ```console
-scuba list
+$ scuba list
 ilancosman/scuba
-rafaelrinaldi/pure
-patrickf3139/fzf.fish@v4.1
-/home/ilan/path/to/local/plugin
+patrickf3139/fzf.fish
+jorgebucaran/nvm.fish@1.1.0
+/home/ilan/path/to/plugin
 ```
 
 > `ilancosman/scuba` is listed because you installed it to start with!
 
-You can use a regular expression after `list` to refine the output.
+`list` also accepts a regular expression to filter the output.
 
 ```console
-scuba list '^/'
-/home/ilan/path/to/local/plugin
+$ scuba list '^/'
+/home/ilan/path/to/plugin
 ```
 
 ### Updating plugins
 
-Update plugins using the `update` command. `update` by itself will update all installed plugins, including Scuba itself.
+The `update` command updates plugins. `update` by itself will update all installed plugins, including Scuba.
 
 ```console
 scuba update
@@ -68,10 +68,10 @@ scuba update
 
 ### Removing plugins
 
-Remove plugins using the `remove` command.
+The `remove` command removes plugins.
 
 ```console
-scuba remove rafaelrinaldi/pure
+scuba remove patrickf3139/fzf.fish
 ```
 
 Since Scuba is just like any other plugin, you can uninstall it using `scuba remove ilancosman/scuba`.
