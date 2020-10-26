@@ -7,7 +7,7 @@ Scuba is a minimal plugin manager for the friendly interactive shell. Extend you
 - Oh My Fish and Fisher plugin support
 - Minimal and elegant design following fish philosophy
 - Blazingly fast concurrent plugin downloads
-- 100% pure fish; easy to contribute to
+- 100% pure fish; easy to contribute to or modify
 
 ## Bootstrap Scuba
 
