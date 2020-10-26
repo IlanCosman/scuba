@@ -84,7 +84,7 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 
 ## Oh My Fish and Fisher plugin support
 
-In general anywhere you see `fisher add`, you can replace it with `scuba install`. The only minor issue may be `uninstall.fish` since Scuba uses an event system instead of storing the plugin in a permenant directory on your machine. Fisher 4.0, coming out sometime in 2021, will also remove `uninstall.fish` support. All plugin should transition to the [uninstall event system][creating_plugins] that Scuba and Fisher already have.
+In general anywhere you see `fisher add`, you can replace it with `scuba install`. The only minor issue may be `uninstall.fish` since Scuba uses an event system instead of storing the plugin in a permenant directory on your machine. Fisher 4.0, coming out sometime in 2021, will also remove `uninstall.fish` support. All plugins should transition to the [uninstall event system][creating_plugins] that Scuba and Fisher already have.
 
 ## Comparison with Fisher
 
@@ -98,7 +98,7 @@ Scuba is highly inspired by [Fisher][] and operates similarly. What are the adva
 
 - Simpler - Scuba is less than half of Fisher's SLOC. Scuba is pure fish while Fisher is roughly 15% awk and sed. Scuba has an organized file structure while Fisher puts everything in one file.
 
-- Better maintained - Fisher has had a little over 30 commits in the last year and a half. Multiple important issues have sat for a year or longer without resolution. Fisher 4.0, meant to fix these issues, was proposed on Jul 31 2020. However, the maintainer has said that he can probably begin work sometime in 2021, half a year later. Scuba was created with the express intention of being better maintained and already solves all of Fisher's longstanding issues.
+- Better maintained - Fisher has had a little over 30 commits in the last year and a half. Multiple important issues have sat for a year or longer without resolution. Fisher 4.0, meant to fix these issues, was proposed on Jul 31 2020. However, the maintainer has said that he can probably begin work sometime in 2021. Scuba was created with the express intention of being better maintained and already solves all of Fisher's longstanding issues.
 
 - More elegant - Scuba follows fish's [design philosophy][].
   - **The law of orthogonality** - Scuba does more with less. It has no need for `self-update` or `self-uninstall` commands like Fisher. Instead, Scuba is merely another Scuba plugin, bootstrapping itself.
