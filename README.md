@@ -5,8 +5,8 @@
 Scuba is a minimal plugin manager for the friendly interactive shell.
 
 - Oh My Fish and Fisher plugin support
-- Minimal and elegant, following fish design philosophy
 - Blazingly fast concurrent plugin downloads
+- Minimal and elegant, following fish design philosophy
 - 100% pure fish; easy to contribute to or modify
 
 ## Bootstrap Scuba
@@ -78,15 +78,15 @@ scuba remove patrickf3139/fzf.fish
 
 Since Scuba is just like any other plugin, you can uninstall it using `scuba remove ilancosman/scuba`.
 
+## Creating a Plugin
+
+See the [plugin creation guide][creating_plugins] for documentation.
+
 ## Contributing
 
 From the smallest typo to the largest feature, contributions of any size or experience level are welcome!
 
 If you're interested in helping contribute to Scuba, please take a look at the [Contributing Guide][].
-
-## Creating a Plugin
-
-See the [plugin creation guide][creating_plugins] for documentation.
 
 ## Oh My Fish and Fisher plugin support
 
@@ -122,7 +122,9 @@ Scuba is highly inspired by [Fisher][] and operates similarly. What are the adva
 
 - Commands vs. File-based configuration - Scuba does not offer two seperate approaches for managing plugins. Instead, everything is done via commands.
 
-- No cache fallback - Fisher offers a cache fallback for installed plugins. However, caching doesn't make much sense when downloading and installing a plugin takes under a second. Caching requires that Fisher create permenant directories on your machine. It has also been the source of multiple bugs.
+- No non-useful bells and whistles
+  - No cache fallback - Fisher offers a cache fallback for installed plugins. However, caching doesn't make much sense when downloading and installing a plugin takes under a second. Caching requires that Fisher create permenant directories on your machine. It has also been the source of multiple bugs.
+  - No installing plugins from private git servers. Fisher 4.0 is also slated to remove this feature.
 
 ## Acknowledgements
 
