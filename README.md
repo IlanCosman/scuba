@@ -86,7 +86,7 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 
 Scuba is highly inspired by [Fisher][] and operates similarly. What are the advantages and disadvantages? What's simply different?
 
-**TLDR:** Scuba is similar to the [prposed fisher 4.0][], but faster, simpler, better maintained, and more in line with fish design philosophy. Unlike Fisher, Scuba does not support file-based configuration or dependencies.
+**TLDR:** Scuba is similar to the [proposed fisher 4.0][] but faster, simpler, better maintained, and more in line with fish design philosophy. Unlike Fisher, Scuba does not support file-based configuration or dependencies.
 
 ### Advantages
 
@@ -110,7 +110,7 @@ Scuba is highly inspired by [Fisher][] and operates similarly. What are the adva
 
 - Commands vs. File-based configuration - Scuba does not offer two seperate approaches for managing plugins. Instead, everything is done via commands.
 
-- Cache fallback - Fisher offers a cache fallback for installed plugins. However, caching doesn't make much sense when downloading and installing a plugin takes under a second. Caching requires that fish create permenant directories on your machine. It has also been the source of multiple bugs for Fisher.
+- Cache fallback - Fisher offers a cache fallback for installed plugins. However, caching doesn't make much sense when downloading and installing a plugin takes under a second. Caching requires that Fisher create permenant directories on your machine. It has also been the source of multiple bugs.
 
 ## Acknowledgements
 
@@ -129,4 +129,4 @@ Scuba is highly inspired by [Fisher][] and operates similarly. What are the adva
 [fisher]: https://github.com/jorgebucaran/fisher
 [license_badge]: https://img.shields.io/github/license/IlanCosman/scuba
 [license]: LICENSE.md
-[prposed fisher 4.0]: https://github.com/jorgebucaran/fisher/issues/582
+[proposed fisher 4.0]: https://github.com/jorgebucaran/fisher/issues/582
