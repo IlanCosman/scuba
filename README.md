@@ -60,7 +60,7 @@ $ scuba list '^/'
 
 ### Updating plugins
 
-The `update` command updates plugins. `update` by itself will update all installed plugins, including Scuba.
+The `update` command updates installed plugins. `update` by itself will update all installed plugins, including Scuba.
 
 ```console
 scuba update
@@ -68,7 +68,7 @@ scuba update
 
 ### Removing plugins
 
-The `remove` command removes plugins.
+The `remove` command removes installed plugins.
 
 ```console
 scuba remove patrickf3139/fzf.fish
@@ -94,7 +94,7 @@ Scuba is highly inspired by [Fisher][] and operates similarly. What are the adva
 
 - Simpler - Scuba is less than half of Fisher's SLOC. Scuba is pure fish while Fisher is roughly 15% awk and sed. Scuba has an organized file structure while Fisher puts all of its many functions in one file.
 
-- Better maintained - Fisher has had a little over 30 commits in the last year and a half. Multiple issues have sat for a year or longer without resolution. Fisher 4.0, meant to fix these issues, was proposed on Jul 31 2020. However, the maintainer says that he can probably begin work sometime in 2021, over 6 months later. Scuba was created with the express intention of being better maintained and already solves all of Fisher's longstanding issues.
+- Better maintained - Fisher has had a little over 30 commits in the last year and a half. Multiple issues have sat for a year or longer without resolution. Fisher 4.0, meant to fix these issues, was proposed on Jul 31 2020. However, the maintainer says that he can probably begin work sometime in 2021, half a year later. Scuba was created with the express intention of being better maintained and already solves all of Fisher's longstanding issues.
 
 - More elegant - Scuba follows fish's [design philosophy][].
   - **The law of orthogonality** - Scuba does more with less. It has no need for `self-update` or `self-uninstall` commands like Fisher. Instead, Scuba is merely another Scuba plugin, bootstrapping itself.
