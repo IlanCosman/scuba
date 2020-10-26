@@ -60,7 +60,7 @@ scuba list '^/'
 
 ### Updating plugins
 
-Update plugins using the `update` command. `update` by itself will update all installed plugins, including scuba itself.
+Update plugins using the `update` command. `update` by itself will update all installed plugins, including Scuba itself.
 
 ```console
 scuba update
@@ -74,7 +74,7 @@ Remove plugins using the `remove` command.
 scuba remove rafaelrinaldi/pure
 ```
 
-Since scuba is just like any other plugin, you can uninstall it using `scuba remove ilancosman/scuba`.
+Since Scuba is just like any other plugin, you can uninstall it using `scuba remove ilancosman/scuba`.
 
 ## Contributing
 
@@ -92,7 +92,7 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 [ci_badge]: https://github.com/IlanCosman/scuba/workflows/CI/badge.svg
 [contributing guide]: CONTRIBUTING.md
 [created a new one]: docs/creating_plugins.md
-[fish_version_badge]: https://img.shields.io/badge/fish-3.1.0%2B-blue
+[fish_version_badge]: https://img.shields.io/badge/fish-3.0.0%2B-blue
 [fish]: https://fishshell.com/
 [fisher]: https://github.com/jorgebucaran/fisher
 [license_badge]: https://img.shields.io/github/license/IlanCosman/scuba
