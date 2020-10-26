@@ -90,13 +90,13 @@ Scuba is highly inspired by [Fisher][] and operates similarly. What are the adva
 
 ### Advantages
 
-- Fast - Since Scuba is pure fish, it is significantly faster than Fisher. However, both are quick in absolute terms.
+- Faster - Since Scuba is pure fish, it is significantly faster than Fisher. However, both are quick in absolute terms.
 
-- Simple - Scuba is less than half of Fisher's SLOC. Scuba is pure fish while Fisher is roughly 15% awk and sed, raising the difficulty of contributing. Scuba has an organized directory structure while Fisher puts all of its many functions in one file, making it more difficult to modify.
+- Simpler - Scuba is less than half of Fisher's SLOC. Scuba is pure fish while Fisher is roughly 15% awk and sed. Scuba has an organized file structure while Fisher puts all of its many functions in one file.
 
-- Better maintained - Fisher has had a little over 30 commits in the last year and a half. Multiple issues have sat for a year or longer without resolution. Fisher 4.0, meant to fix these issues, was proposed on Jul 31 2020. The maintainer says that he can probably begin work sometime in 2021. Scuba was created with the express intention of being better maintained and already solves all of Fisher's longstanding issues.
+- Better maintained - Fisher has had a little over 30 commits in the last year and a half. Multiple issues have sat for a year or longer without resolution. Fisher 4.0, meant to fix these issues, was proposed on Jul 31 2020. However, the maintainer says that he can probably begin work sometime in 2021, over 6 months later. Scuba was created with the express intention of being better maintained and already solves all of Fisher's longstanding issues.
 
-- Elegant - Scuba follows fish's [design philosophy][].
+- More elegant - Scuba follows fish's [design philosophy][].
   - **The law of orthogonality** - Scuba does more with less. It has no need for `self-update` or `self-uninstall` commands like Fisher. Instead, Scuba is merely another Scuba plugin, bootstrapping itself.
   - **The law of responsiveness** - Scuba downloads plugins concurrently so as to use as little time as possible.
   - **Configurability is the root of all evil** - Scuba offers no configuration of any kind. Fisher allows users to manage their plugins using files or from the CLI, and also to choose their installation path.
