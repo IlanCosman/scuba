@@ -2,7 +2,7 @@
 
 > 🤿 Scuba - It's how you swim with the [fish][]
 
-Scuba is the fastest, smallest, and most [fish-y][design philosophy] plugin manager for the friendly interactive shell.
+Scuba is the fastest, smallest, and [fishiest][design philosophy] plugin manager for the friendly interactive shell.
 
 - Oh My Fish and Fisher plugin support
 - Blazingly fast concurrent plugin downloads
