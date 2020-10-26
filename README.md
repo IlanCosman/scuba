@@ -82,9 +82,13 @@ From the smallest typo to the largest feature, contributions of any size or expe
 
 If you're interested in helping contribute to Scuba, please take a look at the [Contributing Guide][].
 
+## Creating a Plugin
+
+See the [plugin creation guide][creating_plugins] for documentation.
+
 ## Oh My Fish and Fisher plugin support
 
-In general anywhere you see `fisher add`, you can replace it with `scuba install`. The only minor issue may be `uninstall.fish` since Scuba uses an event system instead of storing the plugin in a permenant directory on your machine. Fisher 4.0, coming out sometime in 2021, will also remove `uninstall.fish` support. All plugins should transition to the [uninstall event system][creating_plugins] that Scuba and Fisher already have.
+In general anywhere you see `fisher add`, you can replace it with `scuba install`. The only minor issue may be `uninstall.fish` since Scuba uses an event system instead of storing the plugin in a permenant directory on your machine. Thus, plugins that rely on `uninstall.fish` to remove leftover variables will not do so. Fisher 4.0, coming out sometime in 2021, will also remove `uninstall.fish` support. All plugins should transition to the [uninstall event system][creating_plugins] that Scuba and Fisher already have.
 
 ## Comparison with Fisher
 
