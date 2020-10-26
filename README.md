@@ -86,7 +86,7 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 
 Scuba is highly inspired by [Fisher][], and operates similarly. What are the differences? What are the advantages and disadvantages?
 
-**TLDR:** Scuba is essentially [fisher 4.0][] but faster, simpler, better maintained, and in line with Fish design philosophy. Unlike Fisher, Scuba does not support file-based configuration or dependencies.
+**TLDR:** Scuba is similar to the [projected fisher 4.0][] but 100% fish, faster, simpler, better maintained, and more in line with Fish design philosophy. Unlike Fisher, Scuba does not support file-based configuration or dependencies.
 
 ### Differences
 
@@ -94,11 +94,12 @@ Scuba is highly inspired by [Fisher][], and operates similarly. What are the dif
 
 ### Advantages
 
+- Better maintained - Fisher has had roughly 40 commits in the last year and a half. Multiple issues have sat for a year or longer without resolution. Scuba was created with the express intention of being better maintained, and already solves all the longstanding issues of Fisher.
 - Simple - Scuba is less than half of Fisher's SLOC, and pure fish. Fisher is roughly 20% awk and sed, raising the difficulty of contributing. Fisher also puts all of its many functions in one file, making it more difficult to modify if the need arises.
 - Fast - Since Scuba is pure fish, it is significantly faster than Fisher. However, both are quick in absolute terms.
 - Elegant - Scuba follows fish's [design philosophy][].
   - **The law of orthogonality** - Scuba does more with less. It has no need for `self-update` or `self-uninstall` commands like Fisher. Instead, Scuba is merely another Scuba plugin, bootstrapping itself.
-  - **The law of responsiveness** - Scuba downloads plugins concurrently so as to take up as little user time as possible.
+  - **The law of responsiveness** - Scuba downloads plugins concurrently so as to waste as little time as possible.
   - **Configurability is the root of all evil** - Scuba offers no configuration of any kind. Fisher allows users to manage their plugins using files or from the CLI.
   - **The law of discoverability** - Scuba, unlike Fisher, uses the same commands as nearly all package managers, making it immediately familiar to most users.
 
@@ -120,7 +121,7 @@ Scuba is highly inspired by [Fisher][], and operates similarly. What are the dif
 [design philosophy]: https://fishshell.com/docs/current/design.html
 [fish_version_badge]: https://img.shields.io/badge/fish-3.0.0%2B-blue
 [fish]: https://fishshell.com/
-[fisher 4.0]: https://github.com/jorgebucaran/fisher/issues/582
 [fisher]: https://github.com/jorgebucaran/fisher
 [license_badge]: https://img.shields.io/github/license/IlanCosman/scuba
 [license]: LICENSE.md
+[projected fisher 4.0]: https://github.com/jorgebucaran/fisher/issues/582
