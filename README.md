@@ -2,7 +2,7 @@
 
 > 🤿 Scuba - It's how you swim with the [fish][]
 
-Scuba is a minimal plugin manager for the friendly interactive shell. Extend your shell's capabilities, change the look of your prompt, and create repeatable configurations across systems.
+Scuba is a minimal plugin manager for the friendly interactive shell.
 
 - Oh My Fish and Fisher plugin support
 - Minimal and elegant, following fish design philosophy
@@ -34,7 +34,7 @@ scuba install patrickf3139/fzf.fish@v4.1
 You can install plugins from local directories too.
 
 ```console
-scuba install ~/path/to/my/fish/plugin
+scuba install ~/path/to/local/plugin
 ```
 
 ### Listing plugins
@@ -46,7 +46,7 @@ scuba list
 ilancosman/scuba
 rafaelrinaldi/pure
 patrickf3139/fzf.fish@v4.1
-/home/ilan/path/to/my/fish/plugin
+/home/ilan/path/to/local/plugin
 ```
 
 > `ilancosman/scuba` is listed because you installed it to start with!
@@ -55,7 +55,7 @@ You can use a regular expression after `list` to refine the output.
 
 ```console
 scuba list '^/'
-/home/ilan/path/to/my/fish/plugin
+/home/ilan/path/to/local/plugin
 ```
 
 ### Updating plugins
@@ -84,18 +84,14 @@ If you're interested in helping contribute to Scuba, please take a look at the [
 
 ## Comparison with Fisher
 
-Scuba is highly inspired by [Fisher][], and operates similarly. What are the differences? What are the advantages and disadvantages?
+Scuba is highly inspired by [Fisher][], and operates similarly. What are the advantages and disadvantages? What's simply different?
 
-**TLDR:** Scuba is similar to the [projected fisher 4.0][] but faster, simpler, better maintained, and more in line with Fish design philosophy. Unlike Fisher, Scuba does not support file-based configuration or dependencies.
-
-### Differences
-
-- Commands vs. File-based configuration - Scuba does not offer two approaches for managing plugins. Instead, everything is done via commands.
+**TLDR:** Scuba is similar to the [projected fisher 4.0][] but faster, simpler, better maintained, and more in line with fish design philosophy. Unlike Fisher, Scuba does not support file-based configuration or dependencies.
 
 ### Advantages
 
 - Fast - Since Scuba is pure fish, it is significantly faster than Fisher. However, both are quick in absolute terms.
-- Simple - Scuba is less than half of Fisher's SLOC, and pure fish. Fisher is roughly 20% awk and sed, raising the difficulty of contributing. Fisher also puts all of its many functions in one file, making it more difficult to modify if the need arises.
+- Simple - Scuba is less than half of Fisher's SLOC. Scuba is pure fish while Fisher is roughly 15% awk and sed, raising the difficulty of contributing. Scuba has an organized directory structure while Fisher puts all of its many functions in one file, making it more difficult to modify.
 - Better maintained - Fisher has had a little over 30 commits in the last year and a half. Multiple issues have sat for a year or longer without resolution. Scuba was created with the express intention of being better maintained and already solves all of Fisher's longstanding issues.
 - Elegant - Scuba follows fish's [design philosophy][].
   - **The law of orthogonality** - Scuba does more with less. It has no need for `self-update` or `self-uninstall` commands like Fisher. Instead, Scuba is merely another Scuba plugin, bootstrapping itself.
@@ -106,6 +102,11 @@ Scuba is highly inspired by [Fisher][], and operates similarly. What are the dif
 ### Disadvantages
 
 - Scuba does not support dependencies. While this might initially seem like a major flaw, the empirical evidence suggests otherwise. None of the 24 premier plugins/prompts listed on [awesome.fish] have dependencies. Nevertheless, this can be counted as a minor disadvantage.
+
+### Differences
+
+- Commands vs. File-based configuration - Scuba does not offer two seperate approaches for managing plugins. Instead, everything is done via commands.
+- Cache fallback - Fisher offers a cache fallback for installed plugins. However, caching doesn't make much sense when downloading and installing a plugin takes under a second. Caching requires that fish create permenant directories on your machine. It has also been the source of multiple bugs for Fisher.
 
 ## Acknowledgements
 

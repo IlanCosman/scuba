@@ -1,2 +1,3 @@
 ---
 MD013: false # Line-length
+MD033: false # Inline-html
