@@ -7,6 +7,7 @@ function _scuba_sub_install
         end
     end
 
+    set -l pidList ''
     for arg in $argv
         set -l location (command mktemp -d)
         set -a locationList $location
@@ -32,9 +33,9 @@ function _scuba_sub_install
 
         command rm -f $location/{completions,conf.d,functions}/uninstall.fish" &
 
-        set -a pidList (jobs --last --pid)
+        set -a pidList $last_pid
     end
-    wait $pidList
+    wait $pidList 2>/dev/null
 
     for arg in $argv
         set -l location $locationList[(contains --index $arg $argv)]
