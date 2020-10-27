@@ -16,7 +16,7 @@ function _scuba_sub_remove
 
             functions -e $basenamedFiles
 
-            rm -Rf $__fish_config_dir/$$fileVarName
+            command rm -Rf $__fish_config_dir/$$fileVarName
 
             set -e $fileVarName
 
