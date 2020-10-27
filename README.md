@@ -120,10 +120,10 @@ Scuba is highly inspired by [Fisher][] and operates similarly. What are the adva
 
 ### Differences
 
-- Commands vs. File-based configuration - Scuba does not offer two seperate approaches for managing plugins. Instead, everything is done via commands.
+- Commands vs. File-based configuration - Scuba does not offer two separate approaches for managing plugins. Instead, everything is done via commands.
 
 - No non-useful bells and whistles
-  - No cache fallback - Fisher offers a cache fallback for installed plugins. However, caching doesn't make much sense when downloading and installing a plugin takes under a second. Caching requires that Fisher create permenant directories on your machine. It has also been the source of multiple bugs.
+  - No cache fallback - Fisher offers a cache fallback for installed plugins. However, caching doesn't make much sense when downloading and installing a plugin takes under a second. Caching requires that Fisher create permanent directories on your machine. It has also been the source of multiple bugs.
   - No installing plugins from private git servers. Fisher 4.0 is also slated to remove this feature.
 
 ## Acknowledgements

@@ -2,7 +2,7 @@ function scuba
     argparse --stop-nonopt 'v/version' 'h/help' -- $argv
 
     if set -q _flag_version
-        printf '%s\n' 'scuba, version 0.1'
+        printf '%s\n' 'scuba, version 1.0.0'
     else if set -q _flag_help
         _scuba_help
     else if functions --query _scuba_sub_$argv[1]
