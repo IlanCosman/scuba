@@ -7,17 +7,16 @@ function _scuba_sub_install
         end
     end
 
-    set -l pidList ''
     for arg in $argv
         set -l location (command mktemp -d)
         set -a locationList $location
 
         fish --command "
+        command mkdir $location/{completions,conf.d,functions}
+
         if not set argSplit (string split '@' $arg)
             set argSplit[2] HEAD
         end
-
-        command mkdir $location/{completions,conf.d,functions}
 
         if test -e $arg
             command cp -R $arg/* $location
@@ -35,11 +34,10 @@ function _scuba_sub_install
 
         set -a pidList $last_pid
     end
-    wait $pidList 2>/dev/null
+    wait '' $pidList 2>/dev/null
 
     for arg in $argv
         set -l location $locationList[(contains --index $arg $argv)]
-
         if not test -e $location
             continue
         end
