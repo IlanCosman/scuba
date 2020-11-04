@@ -1,3 +1,5 @@
+# [Fisher][] 4.0 has been released and incorporates most of Scuba's features. This project is archived for now.
+
 # Scuba [![ci_badge][]][actions] [![fish_version_badge][]][fish] [![license_badge][]][license] [![blazing_badge][]][blazing_tweet]
 
 > 🤿 Scuba - It's how you swim with the [fish][]
