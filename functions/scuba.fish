@@ -12,10 +12,10 @@ function scuba
             "  -h or --help     print this help message" \
             "" \
             "Subcommands:" \
-            "  install <plugin(s)>   install plugins" \
-            "  remove  <plugin(s)>   remove installed plugins" \
-            "  update  [plugin(s)]   update installed plugins" \
-            "  list    <regex>       list installed plugins matching regex"
+            "  install <plugin(s)>  install plugins" \
+            "  remove  <plugin(s)>  remove installed plugins" \
+            "  update  [plugin(s)]  update installed plugins" \
+            "  list    [regex]      list installed plugins matching regex"
     else if functions --query _scuba_sub_$argv[1]
         _scuba_sub_$argv[1] $argv[2..-1]
     else

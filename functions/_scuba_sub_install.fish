@@ -14,9 +14,7 @@ function _scuba_sub_install
         fish --command "
         command mkdir $location/{completions,conf.d,functions}
 
-        if not set argSplit (string split '@' $arg)
-            set argSplit[2] HEAD
-        end
+        set -l argSplit (string split '@' $arg) || set argSplit[2] HEAD
 
         if test -e $arg
             command cp -R $arg/* $location
@@ -38,9 +36,7 @@ function _scuba_sub_install
 
     for arg in $argv
         set -l location $locationList[(contains --index $arg $argv)]
-        if not test -e $location
-            continue
-        end
+        test -e $location || continue
 
         set -l currentFiles (string replace $location '' $location/{completions,conf.d,functions}/*)
 
